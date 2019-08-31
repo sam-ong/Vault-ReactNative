@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "510196383810",
+    "firebase_url": "https://vault325.firebaseio.com",
+    "project_id": "vault325",
+    "storage_bucket": "vault325.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510196383810:android:57442960456d772c",
+        "android_client_info": {
+          "package_name": "com.poopysoftware.vaultreact"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510196383810-dhbl9u9jp5q9960pa8nho3c6ccsoav4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSuRB3tfW15MkcnqBIb0Sz_MA32GEZ-WE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510196383810-dhbl9u9jp5q9960pa8nho3c6ccsoav4r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "510196383810-o42mmcmvpk0hkopc14sou0p556jugupi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.poopysoftware.vaultreact"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
