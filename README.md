@@ -15,3 +15,7 @@ react-native: 0.59.9
 Follow the instructions [here](https://medium.com/@eng.sohaddader/start-with-react-native-firebase-authentication-and-realtime-database-services-466359d577c6) for navigation and firebase setup stuff
 
 Use createSwitchNavigator instead of Switch Navigator, [here](https://medium.com/@saishaddai/react-native-undefined-is-not-a-function-evaluating-0-reactnavigation-stacknavigator-1d9979eba2e8) and createAppContainer
+
+# To run the application
+
+`react-native run-ios` with xcode installed or `react-native run-android` with an android device connected or an android emulator
