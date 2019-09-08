@@ -10,6 +10,7 @@ export default class Search extends React.Component {
         super();
         this.state = {
             query: '',
+            page: 1,
             results: [],
             loading: false
         }
@@ -32,23 +33,45 @@ export default class Search extends React.Component {
                 <Button title="Search" color="#e93766" onPress={this.handleSearch} />
                 {loading ? (
                     <ActivityIndicator />
-                ) : 
-                (<FlatList
-                    data={results}
-                    renderItem={renderShowItem}
-                    numColumns={2}
-                    keyExtractor={(item) => item.id} />)            
-                    }
+                ) :
+                    (<FlatList
+                        data={results}
+                        renderItem={renderShowItem}
+                        numColumns={2}
+                        keyExtractor={(item) => item.id}
+                        onEndReached={this._handleLoadMore}
+                        onEndReachedThreshold={0.5} />)
+                }
             </View>
         )
     }
 
-    handleSearch() {
-        this.setState({ loading: true })
-        let query = this.state.query
-        fetchSearchResults({query}).then( data => {
+    _handleLoadMore = () => {
+        this.setState(
+            (prevState, nextProps) => ({
+                page: prevState.page + 1
+            })
+        );
+
+        this.fetchResults();
+    };
+
+    async handleSearch() {
+        await this.setState({ loading: true, page: 1 })
+        this.fetchResults();
+    }
+
+    fetchResults() {
+        const { query, page } = this.state
+        fetchSearchResults({ page, query }).then(data => {
             results = data.results.filter(t => t.poster_path != null);
-            this.setState({ results: results, loading: false })
+            this.setState((prevState, nextProps) => ({
+                results:
+                    page === 1
+                        ? results
+                        : [...this.state.results, ...results],
+                loading: false
+            }));
         })
     }
 }

@@ -5,9 +5,9 @@ import { getSearchShowsUrl, getDiscoverShowsUrl } from '../api/urls';
 // Show details
 // ------------------------------------------------------
 
-export const fetchSearchResults = ({ query }, reqParams = {}) =>
+export const fetchSearchResults = ({ page, query }, reqParams = {}) =>
   new Promise(async (resolve, reject) => {
-    const url = getSearchShowsUrl({ query: query });
+    const url = getSearchShowsUrl({ page: page, query: query });
     try {
       const { data } = await axios.get(url, reqParams);
       resolve(data);
