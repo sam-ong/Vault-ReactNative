@@ -17,9 +17,9 @@ export const fetchSearchResults = ({ query }, reqParams = {}) =>
     }
   });
 
-export const fetchDiscoverResults = ({sort_by}, reqParams = {}) => 
+export const fetchDiscoverResults = ({page, sort_by}, reqParams = {}) => 
   new Promise(async(resolve, reject) => {
-    const url = getDiscoverShowsUrl({ sort_by: sort_by })
+    const url = getDiscoverShowsUrl({ page: page, sort_by: sort_by })
 
     try {
       const { data } = await axios.get(url, reqParams);

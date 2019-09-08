@@ -9,6 +9,7 @@ export default class Discover extends React.Component {
     super(props);
     this.state = {
       selection: 'Popular',
+      page: 1,
       results: [],
       loading: true
     };
@@ -28,29 +29,48 @@ export default class Discover extends React.Component {
   }
 
   componentDidMount() {
-    selection = this.mapSelectionUrl(this.state.selection)
-
-    fetchDiscoverResults({ sort_by: selection }).then(data => {
-      results = data.results.filter(t => t.poster_path != null);
-      this.setState({ results: results, loading: false })
-    }).catch(error => {
-      console.log(error)
-    })
+    selected = this.mapSelectionUrl(this.state.selection)
+    this._fetchAllShows(selected)
   }
 
-  selectionHandler(selected) {
-    this.setState({ selection: selected, loading: true })
+  async selectionHandler(selected) {
+    await this.setState({selection: selected, page: 1, loading: true})
+    selected = this.mapSelectionUrl(selected)
+    this._fetchAllShows(selected)
+  }
 
-    fetchDiscoverResults({ sort_by: this.mapSelectionUrl(selected) }).then(data => {
+  _handleLoadMore = () => {
+    this.setState(
+      (prevState, nextProps) => ({
+        page: prevState.page + 1
+      })
+    );
+    selected = this.mapSelectionUrl(this.state.selection)
+
+    this._fetchAllShows(selected);
+  };
+
+  _fetchAllShows = (selected) => {
+    const { page } = this.state;
+
+    fetchDiscoverResults({ page: page, sort_by: selected }).then(data => {
       results = data.results.filter(t => t.poster_path != null);
-      this.setState({ results: results, loading: false })
+
+      this.setState((prevState, nextProps) => ({
+        results:
+          page === 1
+            ? results
+            : [...this.state.results, ...results],
+        loading: false
+      }));
+
     }).catch(error => {
       console.log(error)
     })
   }
 
   render() {
-    const { selection, results, loading } = this.state;
+    const { selection, page, results, loading } = this.state;
     var data = [["Popular", "Newest", "Oldest", "Top rated"]];
     return (
       <View style={{ flex: 1 }}>
@@ -75,7 +95,10 @@ export default class Discover extends React.Component {
               data={results}
               renderItem={renderShowItem}
               numColumns={2}
-              keyExtractor={(item) => item.id} />)
+              keyExtractor={(item) => item.id}
+              onEndReached={this._handleLoadMore}
+              onEndReachedThreshold={0.5}
+            />)
           }
         </DropdownMenu>
 
