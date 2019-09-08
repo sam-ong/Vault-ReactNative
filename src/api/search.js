@@ -11,7 +11,6 @@ export const fetchSearchResults = ({ query }, reqParams = {}) =>
 
     try {
       const { data } = await axios.get(url, reqParams);
-      debugger;
       resolve(data);
     } catch (error) {
       Config.logNetworkErrors && console.log(error);

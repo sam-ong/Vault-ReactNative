@@ -1,6 +1,6 @@
 # Set up stuff
 
-1. Follow the tutorial [here](https://github.com/invertase/react-native-firebase) to get started 
+1. Follow the tutorial [here](https://github.com/invertase/react-native-firebase-starter) to get started 
 2. If you have problems running the app using XCode try the instructions from [here](https://github.com/facebook/react-native/issues/24450#issuecomment-516760157)
 
 

@@ -36,20 +36,3 @@ export const fetchShowRecommendations = ({ show, page = 1 }, reqParams = {}) =>
       reject(error);
     }
   });
-
-// ------------------------------------------------------
-// Search
-// ------------------------------------------------------
-
-export const fetchSearchShows = ({ page, query }, reqParams = {}) =>
-  new Promise(async (resolve, reject) => {
-    const url = getSearchShowsUrl({ page, query });
-
-    try {
-      const { data } = await axios.get(url, reqParams);
-      resolve(data);
-    } catch (error) {
-      Config.logNetworkErrors && console.log(error);
-      reject(error);
-    }
-  });
