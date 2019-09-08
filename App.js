@@ -7,6 +7,8 @@ import Login from './src/screens/login'
 import Home from './src/screens/home'
 import Discover from './src/screens/discover'
 import Search from './src/screens/search'
+import ShowDetails from './src/screens/showDetails'
+
 // import config from './src/common/constants.js';
 
 const initialLogin = createSwitchNavigator(
@@ -31,7 +33,8 @@ const TabNavigator = createBottomTabNavigator(
 const AppNavigator = createSwitchNavigator(
   {
     initialLogin,
-    TabNavigator
+    TabNavigator,
+    ShowDetails
   },
   {
     initialRouteName: 'initialLogin'

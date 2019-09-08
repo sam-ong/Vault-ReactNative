@@ -11,9 +11,9 @@ import {
 // Show details
 // ------------------------------------------------------
 
-export const fetchShowInfo = ({ show }, reqParams = {}) =>
+export const fetchShowInfo = ({ id }, reqParams = {}) =>
   new Promise(async (resolve, reject) => {
-    const url = getShowDetailsUrl({ showId: show.id });
+    const url = getShowDetailsUrl({ showId: id });
 
     try {
       const { data } = await axios.get(url, reqParams);

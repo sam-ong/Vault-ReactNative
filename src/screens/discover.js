@@ -93,7 +93,7 @@ export default class Discover extends React.Component {
           ) :
             (<FlatList
               data={results}
-              renderItem={renderShowItem}
+              renderItem={(data) => renderShowItem(this.props, data)}
               numColumns={2}
               keyExtractor={(item) => item.id}
               onEndReached={this._handleLoadMore}
