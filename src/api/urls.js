@@ -24,5 +24,8 @@ export const getTopRatedShowsUrl = ({ page = 1 }) => `${withKey('/tv/top_rated')
 // Search
 export const getSearchShowsUrl = ({ page = 1, query }) => `${withKey('/search/tv')}&page=${page}&query=${query}`;
 
+//Discover
+export const getDiscoverShowsUrl = ({ page = 1, sort_by }) => `${withKey('/discover/tv')}&page=${page}&sort_by=${sort_by}`;
+
 // Imdb
 export const getImdbLink = imdbID => `https://www.imdb.com/title/${imdbID}`;

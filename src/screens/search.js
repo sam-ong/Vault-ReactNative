@@ -1,7 +1,7 @@
 import React from 'react'
-import { Platform, StyleSheet, Image, Text, View, Button, TextInput, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { Text, View, Button, TextInput, FlatList, ActivityIndicator } from 'react-native'
 import { fetchSearchResults } from '../api/search'
-import { getW500ImageUrl } from '../api/urls'
+import { renderShowItem } from '../components/shows'
 import styles from './style'
 import firebase from 'react-native-firebase';
 
@@ -14,16 +14,6 @@ export default class Search extends React.Component {
             loading: false
         }
         this.handleSearch = this.handleSearch.bind(this);
-    }
-
-    renderItem(data) {
-        return <TouchableOpacity style={{ backgroundColor: 'transparent' }}>
-            <View style={styles2.listItemContainer}>
-                <Text>{data.item.name}</Text>
-                <Image source={{ uri: getW500ImageUrl(data.item.poster_path) }}
-                    style={styles2.imageThumbnail} />
-            </View>
-        </TouchableOpacity>
     }
 
     render() {
@@ -45,7 +35,7 @@ export default class Search extends React.Component {
                 ) : 
                 (<FlatList
                     data={results}
-                    renderItem={this.renderItem}
+                    renderItem={renderShowItem}
                     numColumns={2}
                     keyExtractor={(item) => item.id} />)            
                     }
@@ -62,15 +52,3 @@ export default class Search extends React.Component {
     }
 }
 
-const styles2 = StyleSheet.create({
-    listItemContainer: {
-        flex: 1,
-        flexDirection: 'column', 
-        margin: 1 
-    },
-    imageThumbnail: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 100,
-    },
-  });
