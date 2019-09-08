@@ -47,7 +47,8 @@ export default class Search extends React.Component {
         this.setState({ loading: true })
         let query = this.state.query
         fetchSearchResults({query}).then( data => {
-            this.setState({ results: data.results, loading: false })
+            results = data.results.filter(t => t.poster_path != null);
+            this.setState({ results: results, loading: false })
         })
     }
 }

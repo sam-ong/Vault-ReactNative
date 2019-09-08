@@ -31,7 +31,8 @@ export default class Discover extends React.Component {
     selection = this.mapSelectionUrl(this.state.selection)
 
     fetchDiscoverResults({ sort_by: selection }).then(data => {
-      this.setState({ results: data.results, loading: false })
+      results = data.results.filter(t => t.poster_path != null);
+      this.setState({ results: results, loading: false })
     }).catch(error => {
       console.log(error)
     })
@@ -41,7 +42,8 @@ export default class Discover extends React.Component {
     this.setState({ selection: selected, loading: true })
 
     fetchDiscoverResults({ sort_by: this.mapSelectionUrl(selected) }).then(data => {
-      this.setState({ results: data.results, loading: false })
+      results = data.results.filter(t => t.poster_path != null);
+      this.setState({ results: results, loading: false })
     }).catch(error => {
       console.log(error)
     })
