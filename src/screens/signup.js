@@ -17,7 +17,6 @@ export default class signUp extends Component {
       .catch(error => this.setState({ errorMessage: error.message }))
   }
 
-
   addToDatabase(email, uid) {
     docRef = firebase.firestore().collection("users").doc(uid);
 

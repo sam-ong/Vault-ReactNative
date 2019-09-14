@@ -23,27 +23,19 @@ export const renderShowItem = (props, data) => {
     </TouchableOpacity>
 }
 
-export const addToList = () => {
+
+export const addToList = (show) => {
     const { currentUser } = firebase.auth()
     docRef = firebase.firestore().collection('users').doc(currentUser.uid);
-
-    // this.unsubscribe = this.ref.doc(currentUser.uid).onSnapshot(doc => {
-    //   this.setState({
-    //     watchList: doc.data().watchList,
-    //     alreadyWatched: doc.data().alreadyWatched,
-    //     loading: false
-    //   })
-    // })
-
-    if (!this.watchList || this.watchList[id]) { return; }
+    
+    id = show.id
+    poster_path = show.poster_path
 
     docRef.set({
       "watchList": {
         [id]: poster_path
       }
     }, { merge: true })
-
-    
 }
 
 const styles = StyleSheet.create({

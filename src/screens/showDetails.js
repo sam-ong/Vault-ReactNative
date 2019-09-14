@@ -3,7 +3,7 @@ import { StyleSheet, Platform, FlatList, Image, Text, View, Button, ActivityIndi
 import { fetchShowInfo } from '../api/shows'
 import { getW500ImageUrl } from '../api/urls'
 import { addToList } from '../components/shows'
-import firebase from 'react-native-firebase'
+
 export default class ShowDetails extends React.Component {
     constructor(props) {
         super(props);
@@ -41,7 +41,7 @@ export default class ShowDetails extends React.Component {
                     <Image source={{ uri: getW500ImageUrl(show.backdrop_path) }} style={styles.backdrop} />
                     <Button
                         title="Add to list"
-                        onPress={addToList}
+                        onPress={() => addToList(show)}
                     />
                 </View>
             );

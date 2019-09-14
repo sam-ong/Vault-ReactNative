@@ -83,7 +83,7 @@ export default class Home extends React.Component {
           color="#841584"
           accessibilityLabel="Logout"
         />
-        {/* <SegmentControl segments={segments} /> */}
+        <SegmentControl segments={segments} />
       </View>
     )
   }
