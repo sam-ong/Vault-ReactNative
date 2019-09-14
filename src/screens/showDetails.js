@@ -3,7 +3,7 @@ import { StyleSheet, Platform, FlatList, Image, Text, View, Button, ActivityIndi
 import { fetchShowInfo } from '../api/shows'
 import { getW500ImageUrl } from '../api/urls'
 import { addToList } from '../components/shows'
-
+import firebase from 'react-native-firebase'
 export default class ShowDetails extends React.Component {
     constructor(props) {
         super(props);

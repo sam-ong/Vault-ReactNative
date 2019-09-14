@@ -3,9 +3,13 @@ import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import firebase from 'react-native-firebase';
 export default class Loading extends React.Component {
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
+    this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
       this.props.navigation.navigate(user ? 'Home' : 'Login')
     })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() {

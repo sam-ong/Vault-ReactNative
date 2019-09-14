@@ -1,6 +1,7 @@
 import React from 'react'
 import { getW500ImageUrl } from '../api/urls'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
+import firebase from 'react-native-firebase'
 
 //Show thumbnail for grid view
 
@@ -23,6 +24,25 @@ export const renderShowItem = (props, data) => {
 }
 
 export const addToList = () => {
+    const { currentUser } = firebase.auth()
+    docRef = firebase.firestore().collection('users').doc(currentUser.uid);
+
+    // this.unsubscribe = this.ref.doc(currentUser.uid).onSnapshot(doc => {
+    //   this.setState({
+    //     watchList: doc.data().watchList,
+    //     alreadyWatched: doc.data().alreadyWatched,
+    //     loading: false
+    //   })
+    // })
+
+    if (!this.watchList || this.watchList[id]) { return; }
+
+    docRef.set({
+      "watchList": {
+        [id]: poster_path
+      }
+    }, { merge: true })
+
     
 }
 
