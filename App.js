@@ -11,7 +11,7 @@ import ShowDetails from './src/screens/showDetails'
 
 // import config from './src/common/constants.js';
 
-const initialLogin = createStackNavigator(
+const initialLogin = createSwitchNavigator(
   {
     Loading,
     SignUp,
