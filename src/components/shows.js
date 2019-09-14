@@ -22,6 +22,10 @@ export const renderShowItem = (props, data) => {
     </TouchableOpacity>
 }
 
+export const addToList = () => {
+    
+}
+
 const styles = StyleSheet.create({
     listItemContainer: {
         flex: 1,
