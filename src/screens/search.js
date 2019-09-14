@@ -22,7 +22,6 @@ export default class Search extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Text> SEARCH </Text>
                 <TextInput
                     style={styles.textInput}
                     autoCapitalize="none"

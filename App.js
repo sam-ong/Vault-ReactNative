@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
 import { createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import Loading from './src/screens/loading'
 import SignUp from './src/screens/signup'
@@ -8,8 +7,7 @@ import Home from './src/screens/home'
 import Discover from './src/screens/discover'
 import Search from './src/screens/search'
 import ShowDetails from './src/screens/showDetails'
-
-// import config from './src/common/constants.js';
+import Settings from './src/screens/settings'
 
 const initialLogin = createSwitchNavigator(
   {
@@ -26,7 +24,8 @@ const TabNavigator = createBottomTabNavigator(
   {
     Home: Home,
     Discover: Discover,
-    Search: Search
+    Search: Search,
+    Settings: Settings
   }
 )
 

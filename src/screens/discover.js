@@ -74,7 +74,6 @@ export default class Discover extends React.Component {
     var data = [["Popular", "Newest", "Oldest", "Top rated"]];
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ height: 64 }} />
         <DropdownMenu
           style={{ flex: 1 }}
           bgColor={'white'}

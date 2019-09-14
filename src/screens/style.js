@@ -17,6 +17,7 @@ export default {
   imageThumbnail: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
+    height: 270,
+    width: 160
   }
 }

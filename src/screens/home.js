@@ -10,7 +10,6 @@ export default class Home extends React.Component {
     super();
     this.ref = firebase.firestore().collection('users');
     this.unsubscribe = null;
-    this.userUnsubscribe = null;
 
     this.state = {
       currentUser: null,
@@ -32,14 +31,10 @@ export default class Home extends React.Component {
         loading: false
       })
     })
-
-    this.userUnsubscribe = firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'Home' : 'Login')
-    })
   }
 
   componentWillUnmount() {
-    this.userUnsubscribe();
+    this.unsubscribe();
   }
 
   AlreadyWatched = () => {
@@ -77,21 +72,9 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Hi {currentUser && currentUser.email}!</Text>
-        <Button
-          onPress={this.logout}
-          title="Logout"
-          color="#841584"
-          accessibilityLabel="Logout"
-        />
         <SegmentControl segments={segments} />
       </View>
     )
-  }
-
-  logout() {
-    firebase.auth().signOut()
-      .then(() => this.props.navigation.navigate('Login'))
-      .catch(error => console.log(error.message))
   }
 }
 

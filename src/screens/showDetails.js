@@ -40,8 +40,12 @@ export default class ShowDetails extends React.Component {
                     <Text>{show.name}</Text>
                     <Image source={{ uri: getW500ImageUrl(show.backdrop_path) }} style={styles.backdrop} />
                     <Button
-                        title="Add to list"
-                        onPress={() => addToList(show)}
+                        title="Add to watch list"
+                        onPress={() => addToList("watchList", show)}
+                    />
+                    <Button
+                        title="Add to already watched list"
+                        onPress={() => addToList("alreadyWatched", show)}
                     />
                 </View>
             );
