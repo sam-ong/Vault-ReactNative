@@ -92,6 +92,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  imageThumbnail: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
   }
 })
 
@@ -104,10 +109,11 @@ export const renderList = (props, data, list) => {
       id: id,
     });
   }
-  
+
   return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item)}>
-    <View style={styles.listItemContainer}>
-    <Text> {data.item}</Text>
+    <View>
+      <Text> {data.item}</Text>
+
       <Image source={{ uri: getW500ImageUrl(list[data.item]) }}
         style={styles.imageThumbnail} />
     </View>
