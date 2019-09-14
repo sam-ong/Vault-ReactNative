@@ -13,5 +13,10 @@ export default {
     borderBottomWidth: 1,
     marginTop: 8,
     marginVertical: 15
+  },
+  imageThumbnail: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
   }
 }

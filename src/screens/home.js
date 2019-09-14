@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, Platform, TouchableOpacity, Image, Text, View, Button, FlatList, ActivityIndicator } from 'react-native'
+import { TouchableOpacity, Image, Text, View, Button, FlatList, ActivityIndicator } from 'react-native'
 import firebase from 'react-native-firebase';
 import SegmentControl from 'react-native-segment-control';
 import { getW500ImageUrl } from '../api/urls';
+import styles from './style'
 
 export default class Home extends React.Component {
   constructor() {
@@ -45,6 +46,8 @@ export default class Home extends React.Component {
   };
 
   ShowsList = (list) => {
+    if (this.state.loading) return <ActivityIndicator />
+
     return <FlatList
       data={Object.keys(list)}
       renderItem={(data) => renderList(this.props, data, list)}
@@ -54,7 +57,7 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { currentUser, loading, watchList } = this.state
+    const { currentUser } = this.state
     const segments = [
       {
         title: 'Already watched',
@@ -87,20 +90,6 @@ export default class Home extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  imageThumbnail: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 100,
-  }
-})
-
-
 export const renderList = (props, data, list) => {
   const { navigate } = props.navigation;
   //function to go to next screen
@@ -113,7 +102,6 @@ export const renderList = (props, data, list) => {
   return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item)}>
     <View>
       <Text> {data.item}</Text>
-
       <Image source={{ uri: getW500ImageUrl(list[data.item]) }}
         style={styles.imageThumbnail} />
     </View>

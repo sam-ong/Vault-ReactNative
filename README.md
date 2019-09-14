@@ -19,3 +19,7 @@ Use createSwitchNavigator instead of Switch Navigator, [here](https://medium.com
 # To run the application
 
 `react-native run-ios` with xcode installed or `react-native run-android` with an android device connected or an android emulator
+
+
+## Cannot read property Direction of undefined error
+https://doreentseng.github.io/cannot-read-property-direction-of-undefined/
