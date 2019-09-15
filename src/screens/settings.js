@@ -29,7 +29,7 @@ export default class Settings extends React.Component {
           accessibilityLabel="Logout"
         />
         <Button
-          onPress={about}
+          onPress={() => this.props.navigation.navigate('About')}
           title="About"
           color="#841584"
           accessibilityLabel="About"
@@ -37,10 +37,6 @@ export default class Settings extends React.Component {
       </View>
     )
   }
-}
-
-export function settings() {
-  this.props.navigation.navigate('About')
 }
 
 export function logout() {
