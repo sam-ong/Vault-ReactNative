@@ -8,6 +8,7 @@ import Discover from './src/screens/discover'
 import Search from './src/screens/search'
 import ShowDetails from './src/screens/showDetails'
 import Settings from './src/screens/settings'
+import About from './src/screens/about'
 
 const initialLogin = createSwitchNavigator(
   {
@@ -32,7 +33,8 @@ const TabNavigator = createBottomTabNavigator(
 const ShowsNavigator = createStackNavigator(
   {
     TabNavigator,
-    ShowDetails
+    ShowDetails,
+    About
   }
 )
 

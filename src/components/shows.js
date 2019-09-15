@@ -4,8 +4,7 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 import firebase from 'react-native-firebase'
 import style from '../screens/style'
 
-//Show thumbnail for grid view
-
+//Show image thumbnail for grid view
 export const renderShowItem = (props, data) => {
     const { navigate } = props.navigation;
     //function to go to next screen
@@ -17,7 +16,7 @@ export const renderShowItem = (props, data) => {
 
     return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item.id)}>
         <View style={styles.listItemContainer}>
-            <Text>{data.item.name}</Text>
+            {/* <Text>{data.item.name}</Text> */}
             <Image source={{ uri: getW500ImageUrl(data.item.poster_path) }}
                 style={style.imageThumbnail} />
         </View>
