@@ -3,6 +3,7 @@ import { StyleSheet, Platform, FlatList, Image, Text, View, Button, ActivityIndi
 import { fetchShowInfo } from '../api/shows'
 import { getW500ImageUrl } from '../api/urls'
 import { addToList } from '../components/shows'
+import ViewSimilar from './viewsimilar';
 
 export default class ShowDetails extends React.Component {
     constructor(props) {
@@ -46,6 +47,11 @@ export default class ShowDetails extends React.Component {
                     <Button
                         title="Add to already watched list"
                         onPress={() => addToList("alreadyWatched", show)}
+                    />
+
+                    <Button
+                        title="View similar shows"
+                        onPress={() => this.props.navigation.navigate('ViewSimilar', {show})}
                     />
                 </View>
             );
