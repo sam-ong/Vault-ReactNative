@@ -1,9 +1,9 @@
 import React from 'react'
 import { FlatList, View, ActivityIndicator } from 'react-native'
 import { renderShowItem } from '../components/shows'
-import { fetchSimilarShows } from '../api/shows'
+import { fetchShowRecommendations } from '../api/shows'
 
-export default class ViewSimilar extends React.Component {
+export default class ViewRecommended extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +36,7 @@ export default class ViewSimilar extends React.Component {
         const { page } = this.state;
         const show = this.props.navigation.getParam('show');
 
-        fetchSimilarShows({ show: show, page: page }).then(data => {
+        fetchShowRecommendations({ show: show, page: page }).then(data => {
             results = data.results.filter(t => t.poster_path != null);
 
             this.setState((prevState, nextProps) => ({

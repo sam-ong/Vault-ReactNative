@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-  getSearchShowsUrl,
   getShowDetailsUrl,
   getShowRecommendationsUrl,
   getSimilarShowsUrl,
@@ -27,6 +26,19 @@ export const fetchShowInfo = ({ id }, reqParams = {}) =>
 export const fetchShowRecommendations = ({ show, page = 1 }, reqParams = {}) =>
   new Promise(async (resolve, reject) => {
     const url = getShowRecommendationsUrl({ showId: show.id, page });
+
+    try {
+      const { data } = await axios.get(url, reqParams);
+      resolve(data);
+    } catch (error) {
+      Config.logNetworkErrors && console.log(error);
+      reject(error);
+    }
+  });
+
+export const fetchSimilarShows = ({ show, page = 1 }, reqParams = {}) =>
+  new Promise(async (resolve, reject) => {
+    const url = getSimilarShowsUrl({ showId: show.id, page });
 
     try {
       const { data } = await axios.get(url, reqParams);

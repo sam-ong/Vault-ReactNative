@@ -1,9 +1,8 @@
 import React from 'react'
-import { StyleSheet, Platform, FlatList, Image, Text, View, Button, ActivityIndicator } from 'react-native'
+import { StyleSheet, Image, Text, View, Button, ActivityIndicator } from 'react-native'
 import { fetchShowInfo } from '../api/shows'
 import { getW500ImageUrl } from '../api/urls'
 import { addToList } from '../components/shows'
-import ViewSimilar from './viewsimilar';
 
 export default class ShowDetails extends React.Component {
     constructor(props) {
@@ -50,8 +49,12 @@ export default class ShowDetails extends React.Component {
                     />
 
                     <Button
+                        title="View recommended shows"
+                        onPress={() => this.props.navigation.push('ViewRecommended', {show})}
+                    />
+                    <Button
                         title="View similar shows"
-                        onPress={() => this.props.navigation.navigate('ViewSimilar', {show})}
+                        onPress={() => this.props.navigation.push('ViewSimilar', {show})}
                     />
                 </View>
             );

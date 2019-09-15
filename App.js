@@ -9,7 +9,8 @@ import Search from './src/screens/search'
 import ShowDetails from './src/screens/showDetails'
 import Settings from './src/screens/settings'
 import About from './src/screens/about'
-import ViewSimilar from './src/screens/viewsimilar'
+import ViewRecommended from './src/screens/viewRecommended'
+import ViewSimilar from './src/screens/viewSimilar'
 
 const initialLogin = createSwitchNavigator(
   {
@@ -35,6 +36,7 @@ const ShowsNavigator = createStackNavigator(
   {
     TabNavigator,
     ShowDetails,
+    ViewRecommended,
     ViewSimilar,
     About
   }

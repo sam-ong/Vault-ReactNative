@@ -6,14 +6,13 @@ import style from '../screens/style'
 
 //Show image thumbnail for grid view
 export const renderShowItem = (props, data) => {
-    const { navigate } = props.navigation;
     //function to go to next screen
     goToNextScreen = (id) => {
-        return navigate('ShowDetails', {
+        return props.navigation.push('ShowDetails', {
             id: id,
         });
     }
-
+    
     return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item.id)}>
         <View style={styles.listItemContainer}>
             {/* <Text>{data.item.name}</Text> */}

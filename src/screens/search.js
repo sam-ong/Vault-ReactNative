@@ -1,9 +1,8 @@
 import React from 'react'
-import { Text, View, Button, TextInput, FlatList, ActivityIndicator } from 'react-native'
+import { View, Button, TextInput, FlatList, ActivityIndicator } from 'react-native'
 import { fetchSearchResults } from '../api/search'
 import { renderShowItem } from '../components/shows'
 import styles from './style'
-import firebase from 'react-native-firebase';
 
 export default class Search extends React.Component {
     constructor() {
