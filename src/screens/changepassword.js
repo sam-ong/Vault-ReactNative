@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
+import { Text, TextInput, View, Button, ActivityIndicator } from 'react-native'
 import styles from './style'
 import firebase from 'react-native-firebase';
 
 export default class ChangePassword extends Component {
-    state = { currPassword: '', newPassword: '', confirmNewPassword: '', errorMessage: null }
+    state = { currPassword: '', newPassword: '', confirmNewPassword: '', errorMessage: null, loading: false, success: false }
 
     handleChangePassword = () => {
         if (this.state.currPassword == this.state.newPassword) {
@@ -18,31 +18,23 @@ export default class ChangePassword extends Component {
 
         this.verifyPassword(this.state.currPassword).then(
             (u) => {
+                this.setState({ loading: true })
                 this.updatePassword(this.state.newPassword).then(
                     (u) => {
                         // this.navCtrl.setRoot(TabsPage, { tabIndex: 3 })
-                        this.setState({ errorMessage: "PASSWORD SUCCESFULLY CHANGED" })
+                        this.setState({ success: true, loading: false })
                     },
                     (error) => {
-                        this.setState({ errorMessage: error.message })
+                        this.setState({ errorMessage: error.message, success: false, loading: false })
                         return;
                     }
                 )
             },
             (error) => {
-                this.setState({ errorMessage: error.message })
+                this.setState({ errorMessage: error.message, success: false, loading: false })
                 return;
             }
         )
-
-
-        // firebase.auth()
-        //   .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        //   .then((data) => {
-        //     this.addToDatabase(data.user.email, data.user.uid)
-        //     this.props.navigation.navigate('Discover')
-        //   })
-        //   .catch(error => this.setState({ errorMessage: error.message }))
     }
 
     updatePassword = (password) => {
@@ -56,13 +48,16 @@ export default class ChangePassword extends Component {
     }
 
     render() {
+        const { errorMessage, loading, success } = this.state
         return (
             <View style={styles.container}>
                 <Text style={{ color: '#e93766', fontSize: 40 }}>Change password</Text>
-                {this.state.errorMessage &&
+                {errorMessage && !loading && !success &&
                     <Text style={{ color: 'red' }}>
                         {this.state.errorMessage}
                     </Text>}
+                {loading && <ActivityIndicator />}
+                {success && <Text>Succesfully changed password!</Text>}
                 <TextInput
                     secureTextEntry
                     placeholder="Current password"
