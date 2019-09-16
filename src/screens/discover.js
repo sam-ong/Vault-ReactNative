@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Platform, FlatList, Image, Text, View, Button, ActivityIndicator } from 'react-native'
+import { StyleSheet, FlatList, View, ActivityIndicator } from 'react-native'
 import DropdownMenu from 'react-native-dropdown-menu';
 import { renderShowItem } from '../components/shows'
 import { fetchDiscoverResults } from '../api/search'
@@ -70,7 +70,7 @@ export default class Discover extends React.Component {
   }
 
   render() {
-    const { selection, page, results, loading } = this.state;
+    const { results, loading } = this.state;
     var data = [["Popular", "Newest", "Oldest", "Top rated"]];
     return (
       <View style={{ flex: 1 }}>
@@ -105,11 +105,3 @@ export default class Discover extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})

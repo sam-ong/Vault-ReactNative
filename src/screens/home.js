@@ -4,7 +4,6 @@ import firebase from 'react-native-firebase';
 import SegmentControl from 'react-native-segment-control';
 import { getW500ImageUrl } from '../api/urls';
 import styles from './style'
-
 export default class Home extends React.Component {
   constructor() {
     super();
@@ -79,7 +78,7 @@ export default class Home extends React.Component {
 
 export const renderList = (props, data, list) => {
   const { navigate } = props.navigation;
-  //function to go to next screen
+  //Function to go to next screen
   goToNextScreen = (id) => {
     return navigate('ShowDetails', {
       id: id,

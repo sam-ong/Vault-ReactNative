@@ -4,7 +4,6 @@ import { fetchShowInfo } from '../api/shows'
 import { getW500ImageUrl } from '../api/urls'
 import { addToList, removeFromList } from '../components/shows'
 import firebase from 'react-native-firebase'
-
 export default class ShowDetails extends React.Component {
     constructor(props) {
         super(props);

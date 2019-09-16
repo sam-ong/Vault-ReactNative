@@ -34,6 +34,7 @@ export const renderSeasonItem = (props, data) => {
     </View>
 }
 
+//Display list of episodes
 export const renderEpisodeItem = (props, data) => {
     goToNextScreen = (id) => {
         return props.navigation.push('EpisodeDetails', {
@@ -62,7 +63,7 @@ export const addToList = (list, show) => {
     }, { merge: true })
 }
 
-//Add to watch list or already watched list: "watchList" | "alreadyWatched"
+//Remove from watch list or already watched list: "watchList" | "alreadyWatched"
 export const removeFromList = (list, show) => {
     const { currentUser } = firebase.auth()
     docRef = firebase.firestore().collection('users').doc(currentUser.uid);

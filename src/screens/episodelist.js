@@ -1,8 +1,7 @@
 import React from 'react'
-import { StyleSheet, Button, View, FlatList, ActivityIndicator } from 'react-native'
+import { View, FlatList, ActivityIndicator } from 'react-native'
 import { getSeason } from '../api/shows'
 import {renderSeasonItem} from '../components/shows'
-
 export default class EpisodeList extends React.Component {
     constructor(props) {
         super(props);
@@ -48,12 +47,6 @@ export default class EpisodeList extends React.Component {
             episode: episode
         });
     }
-
-    debug() {
-        debugger;
-
-    }
-
     render() {
         const { seasons, loading } = this.state;
         return (
@@ -66,16 +59,7 @@ export default class EpisodeList extends React.Component {
                         keyExtractor={(item) => `${item.id}`}
                     />
                 }
-
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})

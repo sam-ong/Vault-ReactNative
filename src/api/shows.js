@@ -7,7 +7,7 @@ import {
 } from '../api/urls';
 
 // ------------------------------------------------------
-// Show details
+// Get show details
 // ------------------------------------------------------
 
 export const fetchShowInfo = ({ id }, reqParams = {}) =>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, Image, Text, View, Button, ActivityIndicator } from 'react-native'
-import { fetchEpisodeInfo } from '../api/shows'
 import { getW500ImageUrl } from '../api/urls'
 
 export default class EpisodeDetails extends React.Component {

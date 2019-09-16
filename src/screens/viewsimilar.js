@@ -2,7 +2,6 @@ import React from 'react'
 import { FlatList, View, ActivityIndicator } from 'react-native'
 import { renderShowItem } from '../components/shows'
 import { fetchSimilarShows } from '../api/shows'
-
 export default class ViewSimilar extends React.Component {
     constructor(props) {
         super(props);

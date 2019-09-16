@@ -2,7 +2,6 @@ import React from 'react'
 import { FlatList, View, ActivityIndicator } from 'react-native'
 import { renderShowItem } from '../components/shows'
 import { fetchShowRecommendations } from '../api/shows'
-
 export default class ViewRecommended extends React.Component {
     constructor(props) {
         super(props);

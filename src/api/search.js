@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getSearchShowsUrl, getDiscoverShowsUrl } from '../api/urls';
 
 // ------------------------------------------------------
-// Show details
+// Search and Discover
 // ------------------------------------------------------
 
 export const fetchSearchResults = ({ page, query }, reqParams = {}) =>
