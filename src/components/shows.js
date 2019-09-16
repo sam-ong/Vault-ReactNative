@@ -1,6 +1,6 @@
 import React from 'react'
 import { getW500ImageUrl } from '../api/urls'
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Image, Text, TouchableOpacity, FlatList } from 'react-native'
 import firebase from 'react-native-firebase'
 import style from '../screens/style'
 
@@ -12,7 +12,7 @@ export const renderShowItem = (props, data) => {
             id: id,
         });
     }
-    
+
     return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item.id)}>
         <View style={styles.listItemContainer}>
             {/* <Text>{data.item.name}</Text> */}
@@ -22,18 +22,43 @@ export const renderShowItem = (props, data) => {
     </TouchableOpacity>
 }
 
+//Display episode list
+export const renderSeasonItem = (props, data) => {
+    return <View style={styles.listItemContainer}>
+        <Text style={{fontWeight: 'bold'}}> {data.item.name}</Text>
+        <FlatList
+            data={data.item.episodes}
+            renderItem={(data) => renderEpisodeItem(props, data)}
+            keyExtractor={(item) => `${item.id}`}
+        />
+    </View>
+}
+
+export const renderEpisodeItem = (props, data) => {
+    goToNextScreen = (id) => {
+        return props.navigation.push('EpisodeDetails', {
+            id: id,
+        });
+    }
+    return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item.id)}>
+        <View style={styles.listItemContainer}>
+            <Text>{data.item.name}</Text>
+        </View>
+    </TouchableOpacity>
+}
+
 //Add to watch list or already watched list: "watchList" | "alreadyWatched"
 export const addToList = (list, show) => {
     const { currentUser } = firebase.auth()
     docRef = firebase.firestore().collection('users').doc(currentUser.uid);
-    
+
     id = show.id
     poster_path = show.poster_path
 
     docRef.set({
-      [list]: {
-        [id]: poster_path
-      }
+        [list]: {
+            [id]: poster_path
+        }
     }, { merge: true })
 }
 
@@ -42,7 +67,7 @@ export const removeFromList = (list, show) => {
     const { currentUser } = firebase.auth()
     docRef = firebase.firestore().collection('users').doc(currentUser.uid);
     docRef.update({
-      [list + "." + show.id]: firebase.firestore.FieldValue.delete()
+        [list + "." + show.id]: firebase.firestore.FieldValue.delete()
     })
 }
 

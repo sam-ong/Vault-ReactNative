@@ -11,6 +11,7 @@ import Settings from './src/screens/settings'
 import About from './src/screens/about'
 import ViewRecommended from './src/screens/viewRecommended'
 import ViewSimilar from './src/screens/viewsimilar'
+import EpisodeList from './src/screens/episodelist'
 
 const initialLogin = createSwitchNavigator(
   {
@@ -38,6 +39,7 @@ const ShowsNavigator = createStackNavigator(
     ShowDetails,
     ViewRecommended,
     ViewSimilar,
+    EpisodeList,
     About
   }
 )

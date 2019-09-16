@@ -16,6 +16,7 @@ export const getW1280ImageUrl = imagePath => `${BASE_IMAGE_URL}w1280${imagePath}
 export const getShowDetailsUrl = ({ showId }) => withKey(`/tv/${showId}`);
 export const getShowRecommendationsUrl = ({ showId, page = 1 }) => `${withKey(`/tv/${showId}/recommendations`)}&page=${page}`;
 export const getSimilarShowsUrl = ({ showId, page = 1 }) => `${withKey(`/tv/${showId}/similar`)}&page=${page}`;
+export const getSeasonsUrl = ({ showId, season }) => `${withKey(`/tv/${showId}/season/${season}`)}`
 
 // Sections
 export const getPopularShowsUrl = ({ page = 1 }) => `${withKey('/tv/popular')}&page=${page}`;

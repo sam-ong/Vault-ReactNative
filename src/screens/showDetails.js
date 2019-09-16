@@ -96,6 +96,10 @@ export default class ShowDetails extends React.Component {
                         title="View similar shows"
                         onPress={() => this.props.navigation.push('ViewSimilar', { show })}
                     />
+                    <Button
+                        title="View episode list"
+                        onPress={() => this.props.navigation.push('EpisodeList', { show })}
+                    />
                 </View>
             );
         }

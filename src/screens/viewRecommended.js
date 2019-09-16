@@ -69,8 +69,6 @@ export default class ViewRecommended extends React.Component {
                         onEndReachedThreshold={0.5}
                     />)
                 }
-
-
             </View>
         );
     }
