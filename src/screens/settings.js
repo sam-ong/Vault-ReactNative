@@ -34,6 +34,12 @@ export default class Settings extends React.Component {
           color="#841584"
           accessibilityLabel="About"
         />
+        <Button
+          onPress={() => this.props.navigation.navigate('ChangePassword')}
+          title="Change password"
+          color="#841584"
+          accessibilityLabel="Change password"
+        />
       </View>
     )
   }

@@ -5,7 +5,7 @@ import { renderSeasonItem } from '../components/shows'
 export default class EpisodeList extends React.Component {
     constructor(props) {
         super(props);
-        show = this.props.navigation.getParam('show')
+
         this.state = {
             show: this.props.navigation.getParam('show'),
             loading: true,
@@ -23,7 +23,6 @@ export default class EpisodeList extends React.Component {
                     if (this._isMounted) {
                         this.setState((prevState, nextProps) => ({
                             seasons: seasons,
-                            loading: false
                         }));
                     }
                 },

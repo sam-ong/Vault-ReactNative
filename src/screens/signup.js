@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
 import styles from './style'
 import firebase from 'react-native-firebase';
-export default class signUp extends Component {
+export default class SignUp extends Component {
   state = { email: '', password: '', errorMessage: null }
 
   handleSignUp = () => {
