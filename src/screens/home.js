@@ -13,7 +13,6 @@ export default class Home extends React.Component {
 
     this.state = {
       currentUser: null,
-      unsuscribe: null,
       loading: true,
       watchList: [],
       alreadyWatched: []

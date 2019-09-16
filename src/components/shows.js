@@ -37,6 +37,15 @@ export const addToList = (list, show) => {
     }, { merge: true })
 }
 
+//Add to watch list or already watched list: "watchList" | "alreadyWatched"
+export const removeFromList = (list, show) => {
+    const { currentUser } = firebase.auth()
+    docRef = firebase.firestore().collection('users').doc(currentUser.uid);
+    docRef.update({
+      [list + "." + show.id]: firebase.firestore.FieldValue.delete()
+    })
+}
+
 const styles = StyleSheet.create({
     listItemContainer: {
         flex: 1,
