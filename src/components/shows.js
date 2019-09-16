@@ -37,7 +37,7 @@ export const renderSeasonItem = (props, data) => {
 export const renderEpisodeItem = (props, data) => {
     goToNextScreen = (id) => {
         return props.navigation.push('EpisodeDetails', {
-            id: id,
+            episode: data.item,
         });
     }
     return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item.id)}>
