@@ -24,24 +24,28 @@ export const renderShowItem = (props, data) => {
 
 //Display episode list
 export const renderSeasonItem = (props, data) => {
+    if(!data.item) return;
+    episodes = data.item.episodes
+
     return <View style={styles.listItemContainer}>
         <Text style={{fontWeight: 'bold'}}> {data.item.name}</Text>
         <FlatList
-            data={data.item.episodes}
-            renderItem={(data) => renderEpisodeItem(props, data)}
-            keyExtractor={(item) => `${item.id}`}
+            data={episodes}
+            renderItem={(episodes) => renderEpisodeItem(props, episodes)}
+            keyExtractor={(item) => data.item.id+""+item.id}
         />
     </View>
 }
 
 //Display list of episodes
 export const renderEpisodeItem = (props, data) => {
-    goToNextScreen = (id) => {
+    goToNextScreen = (episode) => {
         return props.navigation.push('EpisodeDetails', {
-            episode: data.item,
+            episode: episode
         });
     }
-    return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item.id)}>
+
+    return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item)}>
         <View style={styles.listItemContainer}>
             <Text>{data.item.name}</Text>
         </View>

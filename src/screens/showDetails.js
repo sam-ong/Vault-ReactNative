@@ -8,6 +8,7 @@ export default class ShowDetails extends React.Component {
     constructor(props) {
         super(props);
         this.ref = firebase.firestore().collection('users');
+        id = this.props.navigation.getParam('id')
 
         this.state = {
             id: this.props.navigation.getParam('id'),
@@ -39,12 +40,8 @@ export default class ShowDetails extends React.Component {
     fetchShowDetails(id) {
         fetchShowInfo({ id: id }).then(data => {
             this.setState({
-                show: data,
-                loading: false
-            });
-            url = getW500ImageUrl(data.backdrop_path)
-
-
+                show: data
+            })
         }).catch(error => {
             console.log(error)
         })
