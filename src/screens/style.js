@@ -19,6 +19,7 @@ export default {
     margin: 8,
     height: 270,
     width: 160,
+    borderRadius: 4
     
     
   }
