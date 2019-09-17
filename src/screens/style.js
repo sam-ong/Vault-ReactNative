@@ -2,8 +2,9 @@ import {StyleSheet} from 'react-native';
 export default {
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
+    
   },
   textInput: {
     height: 40,
@@ -15,9 +16,10 @@ export default {
     marginVertical: 15
   },
   imageThumbnail: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    margin: 8,
     height: 270,
-    width: 160
+    width: 160,
+    
+    
   }
 }
