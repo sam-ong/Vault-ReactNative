@@ -87,7 +87,7 @@ export const renderList = (props, data, list) => {
 
   return <TouchableOpacity style={{ backgroundColor: 'transparent' }} onPress={() => this.goToNextScreen(data.item)}>
     <View>
-      <Text> {data.item}</Text>
+  
       <Image source={{ uri: getW500ImageUrl(list[data.item]) }}
         style={styles.imageThumbnail} />
     </View>
