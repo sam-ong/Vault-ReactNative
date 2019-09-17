@@ -3,6 +3,7 @@ import { StyleSheet, FlatList, View, ActivityIndicator } from 'react-native'
 import DropdownMenu from 'react-native-dropdown-menu';
 import { renderShowItem } from '../components/shows'
 import { fetchDiscoverResults } from '../api/search'
+import styles from './style'
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -73,17 +74,12 @@ export default class Discover extends React.Component {
     const { results, loading } = this.state;
     var data = [["Popular", "Newest", "Oldest", "Top rated"]];
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <DropdownMenu
           style={{ flex: 1 }}
           bgColor={'white'}
           tintColor={'#666666'}
           activityTintColor={'green'}
-          // arrowImg={}      
-          // checkImage={}   
-          // optionTextStyle={{color: '#333333'}}
-          // titleStyle={{color: '#333333'}} 
-          // maxHeight={300} 
           handler={(selection, row) => this.selectionHandler(data[selection][row])}
           data={data}
         >
