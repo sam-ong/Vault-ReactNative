@@ -2,6 +2,8 @@ import React from 'react'
 import { FlatList, View, ActivityIndicator } from 'react-native'
 import { renderShowItem } from '../components/shows'
 import { fetchShowRecommendations } from '../api/shows'
+import styles from './style'
+
 export default class ViewRecommended extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +56,7 @@ export default class ViewRecommended extends React.Component {
     render() {
         const { results, loading } = this.state;
         return (
-            <View style={{ flex: 1 }}>
+            <View style={styles.container}>
 
                 {loading ? (
                     <ActivityIndicator />
