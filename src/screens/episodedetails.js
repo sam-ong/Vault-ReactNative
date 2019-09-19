@@ -21,6 +21,15 @@ export default class EpisodeDetails extends React.Component {
   render() {
     const { episode } = this.state;
     if (episode) {
+
+      // make the date representation more human-readable
+      Date.prototype.makeDate = function() {
+        var mm = this.toLocaleString('default', { month: 'long' });
+        var dd = this.getDate();
+        return [mm, (dd>9 ? '' : '0') + dd + ',', this.getFullYear(),].join(' ');
+      };
+      var date = new Date(episode.air_date);
+    
       return (
         <ScrollView>
         <View style={styles.container}>
@@ -30,7 +39,7 @@ export default class EpisodeDetails extends React.Component {
           />
           <View style={styles.description}>
             <Text style={styles.title}>{episode.name}</Text>
-            {/* <Text style={styles.year}>{airDate} </Text> */}
+            <Text style={styles.year}>{date.makeDate()} </Text>
             <Text style={styles.overview}>{episode.overview}</Text>
           </View>
         </View>
