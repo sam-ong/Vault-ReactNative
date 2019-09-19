@@ -76,6 +76,7 @@ export default class ShowDetails extends React.Component {
         <ScrollView>
           <View style={styles.container}>
             {/* <Text>{show.name}</Text> */}
+
             <View style={styles.images}>
               <Image
                 source={{ uri: getW500ImageUrl(show.backdrop_path) }}
@@ -86,50 +87,63 @@ export default class ShowDetails extends React.Component {
                 style={styles.poster}
               />
             </View>
+            
             <View style={styles.buttons}>
-            {/* buttons for adding/removing from already watched */}
+              {/* buttons for adding/removing from already watched */}
               {this.isInAlreadyWatched(show.id) ? (
-                    <Icon
-                    raised
-                    name="eye-check-outline"
-                    type="material-community"
-                    color="#f50"
-                    size={15}
-                    onPress={() => removeFromList("alreadyWatched", show)}
-                  ></Icon>
-                 ) : (
-                   <Icon
-                   raised
-                   name="eye-plus-outline"
-                   type="material-community"
-                   color="#49b4b4"
-                   size={15}
-                   onPress={() => addToList("alreadyWatched", show)}
-                 ></Icon>
-              )}
-
-                   {/* buttons for adding/removing from watch list */}
-                {this.isInWatchList(show.id) ? (
-                 <Icon
-                 raised
-                 name="check"
-                 type="feather"
-                 color="#f50"
-                 size={15}
-                 onPress={() => removeFromList("watchList", show)}
-               ></Icon>
+                <Icon
+                  style={{ paddingRight: 100 }}
+                  raised
+                  name="eye-check-outline"
+                  type="material-community"
+                  color="#f50"
+                  size={15}
+                  onPress={() => removeFromList("alreadyWatched", show)}
+                ></Icon>
               ) : (
                 <Icon
+                  style={{ paddingRight: 100 }}
+                  raised
+                  name="eye-plus-outline"
+                  type="material-community"
+                  color="#49b4b4"
+                  size={15}
+                  onPress={() => addToList("alreadyWatched", show)}
+                ></Icon>
+              )}
+              <Text>{"           "}</Text>
+              {/* buttons for adding/removing from watch list */}
+              {this.isInWatchList(show.id) ? (
+                <Icon
+                  raised
+                  name="check"
+                  type="feather"
+                  color="#f50"
+                  size={15}
+                  onPress={() => removeFromList("watchList", show)}
+                ></Icon>
+              ) : (
+                <Icon
+                  raised
+                  name="plus"
+                  type="feather"
+                  color="#49b4b4"
+                  size={15}
+                  onPress={() => addToList("watchList", show)}
+                ></Icon>
+              )}
+
+              <Text>{"           "}</Text>
+              <Icon
                 raised
-                name="plus"
+                name="align-left"
                 type="feather"
                 color="#49b4b4"
                 size={15}
-                onPress={() => addToList("watchList", show)}
+                onPress={() =>
+                  this.props.navigation.push("EpisodeList", { show })
+                }
               ></Icon>
-              )}
-
-             
             </View>
             <View style={styles.description}>
               {/* <Button
@@ -148,7 +162,6 @@ export default class ShowDetails extends React.Component {
           /> */}
 
               <Text style={styles.title}>{show.name}</Text>
-
               <Text style={styles.year}>{airDate} </Text>
               <Text style={styles.overview}>{show.overview}</Text>
             </View>
@@ -173,10 +186,8 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4
     },
-
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-
     elevation: 9
   },
   backdrop: {
@@ -194,9 +205,8 @@ const styles = StyleSheet.create({
   },
   buttons: {
     top: 40,
-    paddingVertical: 15,
+    paddingVertical: 10,
     flexDirection: "row",
-    justifyContent: "space-between"
     // borderBottomColor: "#000",
     // borderBottomWidth: 3,
     // shadowColor: "#000",
