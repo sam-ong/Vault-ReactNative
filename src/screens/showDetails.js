@@ -4,7 +4,6 @@ import {
   Image,
   Text,
   View,
-  Button,
   ActivityIndicator,
   ScrollView
 } from "react-native";
