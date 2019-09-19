@@ -4,7 +4,9 @@ export default {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-    
+  },
+  segment: {
+    paddingVertical: 6,
   },
   textInput: {
     height: 40,
@@ -15,7 +17,7 @@ export default {
     marginTop: 8,
     marginVertical: 15
   },
-  
+
   imageThumbnail: {
     margin: 8,
     height: 270,

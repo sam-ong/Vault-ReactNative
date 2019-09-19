@@ -5,12 +5,16 @@ import {
   Text,
   View,
   Button,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView
 } from "react-native";
+import { Icon } from "react-native-elements";
 import { fetchShowInfo } from "../api/shows";
 import { getW500ImageUrl } from "../api/urls";
 import { addToList, removeFromList } from "../components/shows";
+import { fonts } from "../utils/fonts";
 import firebase from "react-native-firebase";
+
 export default class ShowDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -67,46 +71,68 @@ export default class ShowDetails extends React.Component {
   render() {
     const { show, loading } = this.state;
     if (show && !loading) {
-var airDate = show.first_air_date.substring(0,4);
+      var airDate = show.first_air_date.substring(0, 4);
       return (
-        <View style={styles.container}>
-          {/* <Text>{show.name}</Text> */}
-          <Image
-            source={{ uri: getW500ImageUrl(show.backdrop_path) }}
-            style={styles.backdrop}
-          />
-          <Image
-            source={{ uri: getW500ImageUrl(show.poster_path) }}
-            style={styles.poster}
-          />
-
-          <View style={styles.buttons}>
-            {this.isInWatchList(show.id) ? (
-              <Button
-                title="Remove from watch list"
-                onPress={() => removeFromList("watchList", show)}
+        <ScrollView>
+          <View style={styles.container}>
+            {/* <Text>{show.name}</Text> */}
+            <View style={styles.images}>
+              <Image
+                source={{ uri: getW500ImageUrl(show.backdrop_path) }}
+                style={styles.backdrop}
               />
-            ) : (
-              <Button
-                title="Add to watch list"
+              <Image
+                source={{ uri: getW500ImageUrl(show.poster_path) }}
+                style={styles.poster}
+              />
+            </View>
+            <View style={styles.buttons}>
+            {/* buttons for adding/removing from already watched */}
+              {this.isInAlreadyWatched(show.id) ? (
+                    <Icon
+                    raised
+                    name="eye-check-outline"
+                    type="material-community"
+                    color="#f50"
+                    size={15}
+                    onPress={() => removeFromList("alreadyWatched", show)}
+                  ></Icon>
+                 ) : (
+                   <Icon
+                   raised
+                   name="eye-plus-outline"
+                   type="material-community"
+                   color="#49b4b4"
+                   size={15}
+                   onPress={() => addToList("alreadyWatched", show)}
+                 ></Icon>
+              )}
+
+                   {/* buttons for adding/removing from watch list */}
+                {this.isInWatchList(show.id) ? (
+                 <Icon
+                 raised
+                 name="check"
+                 type="feather"
+                 color="#f50"
+                 size={15}
+                 onPress={() => removeFromList("watchList", show)}
+               ></Icon>
+              ) : (
+                <Icon
+                raised
+                name="plus"
+                type="feather"
+                color="#49b4b4"
+                size={15}
                 onPress={() => addToList("watchList", show)}
-              />
-            )}
+              ></Icon>
+              )}
 
-            {this.isInAlreadyWatched(show.id) ? (
-              <Button
-                title="Remove from already watched list"
-                onPress={() => removeFromList("alreadyWatched", show)}
-              />
-            ) : (
-              <Button
-                title="Add to already watched"
-                onPress={() => addToList("alreadyWatched", show)}
-              />
-            )}
-          </View>
-          <View style={styles.description}>
-            {/* <Button
+             
+            </View>
+            <View style={styles.description}>
+              {/* <Button
             title="View recommended shows"
             onPress={() =>
               this.props.navigation.push("ViewRecommended", { show })
@@ -121,12 +147,13 @@ var airDate = show.first_air_date.substring(0,4);
             onPress={() => this.props.navigation.push("EpisodeList", { show })}
           /> */}
 
-            <Text>{show.name}</Text>
-            <Text>{airDate}</Text>
-            <Text>{show.overview}</Text>
+              <Text style={styles.title}>{show.name}</Text>
 
+              <Text style={styles.year}>{airDate} </Text>
+              <Text style={styles.overview}>{show.overview}</Text>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       );
     } else {
       return <ActivityIndicator />;
@@ -138,6 +165,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center"
+  },
+  images: {
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+
+    elevation: 9
   },
   backdrop: {
     width: 400,
@@ -154,25 +194,45 @@ const styles = StyleSheet.create({
   },
   buttons: {
     top: 40,
+    paddingVertical: 15,
     flexDirection: "row",
-    justifyContent: "space-between",
-    borderBottomColor: "#000",
-    borderBottomWidth: 3,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7
+    justifyContent: "space-between"
+    // borderBottomColor: "#000",
+    // borderBottomWidth: 3,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 3
+    // },
+    // shadowOpacity: 0.29,
+    // shadowRadius: 4.65,
+    // elevation: 7
   },
-  description:  {
-      backgroundColor: '#FAFAFA',
-      paddingVertical: 30,
-      paddingHorizontal: 35,
-      top: 50,
-      flex: 1,
-      alignSelf: 'stretch',
+  description: {
+    backgroundColor: "#FAFAFA",
+    paddingVertical: 30,
+    paddingHorizontal: 35,
+    top: 50,
+    flex: 1,
+    alignSelf: "stretch"
+  },
+  title: {
+    color: "#404040",
+    fontSize: 32,
+    marginBottom: 10,
+    fontFamily: fonts.AvenirHeavy
+  },
+  year: {
+    color: "#AAAAAA",
+    fontSize: 20,
+    fontFamily: fonts.AvenirHeavy
+  },
+  overview: {
+    color: "#4f4f4f",
+    fontSize: 17,
+    lineHeight: 30,
+    marginTop: 30,
+    marginBottom: 100,
+    fontFamily: fonts.AvenirRegular
   }
 });
