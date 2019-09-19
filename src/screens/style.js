@@ -15,6 +15,7 @@ export default {
     marginTop: 8,
     marginVertical: 15
   },
+  
   imageThumbnail: {
     margin: 8,
     height: 270,
