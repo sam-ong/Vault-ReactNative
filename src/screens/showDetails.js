@@ -88,10 +88,13 @@ export default class ShowDetails extends React.Component {
             </View>
             
             <View style={styles.buttons}>
+          
+         
+            <Text>{"                    "}</Text>
               {/* buttons for adding/removing from already watched */}
               {this.isInAlreadyWatched(show.id) ? (
                 <Icon
-                  style={{ paddingRight: 100 }}
+                  style={{ paddingRight: 100, position: "absolute", }}
                   raised
                   name="eye-check-outline"
                   type="material-community"
@@ -101,7 +104,7 @@ export default class ShowDetails extends React.Component {
                 ></Icon>
               ) : (
                 <Icon
-                  style={{ paddingRight: 100 }}
+                  style={{ paddingRight: 100,position: "absolute" }}
                   raised
                   name="eye-plus-outline"
                   type="material-community"
@@ -114,6 +117,7 @@ export default class ShowDetails extends React.Component {
               {/* buttons for adding/removing from watch list */}
               {this.isInWatchList(show.id) ? (
                 <Icon
+                style={{ paddingRight: 100,position: "absolute" }}
                   raised
                   name="check"
                   type="feather"
@@ -123,6 +127,7 @@ export default class ShowDetails extends React.Component {
                 ></Icon>
               ) : (
                 <Icon
+                style={{ paddingRight: 100,position: "absolute" }}
                   raised
                   name="plus"
                   type="feather"
@@ -164,6 +169,7 @@ export default class ShowDetails extends React.Component {
               <Text style={styles.year}>{airDate} </Text>
               <Text style={styles.overview}>{show.overview}</Text>
             </View>
+           
           </View>
         </ScrollView>
       );
@@ -176,7 +182,7 @@ export default class ShowDetails extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   images: {
     alignItems: "center",
@@ -203,23 +209,23 @@ const styles = StyleSheet.create({
     borderColor: "#FFFFFF"
   },
   buttons: {
-    top: 40,
-    paddingVertical: 10,
+    top: 50,
+    alignItems: "center",
+    paddingTop: 10,
+    paddingBottom: 15,
     flexDirection: "row",
-    // borderBottomColor: "#000",
-    // borderBottomWidth: 3,
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 3
-    // },
-    // shadowOpacity: 0.29,
-    // shadowRadius: 4.65,
-    // elevation: 7
+    width: "100%",
+    backgroundColor: '#FFF',
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 7 }, // change this for more shadow
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    zIndex: 1 // ensure shadow gets rendered
   },
   description: {
-    backgroundColor: "#FAFAFA",
-    paddingVertical: 30,
+    zIndex: 0,
+    backgroundColor: "#FAFAFA", 
+    paddingVertical: 50,
     paddingHorizontal: 35,
     top: 50,
     flex: 1,

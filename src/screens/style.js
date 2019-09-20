@@ -7,6 +7,7 @@ export default {
   },
   segment: {
     paddingVertical: 6,
+    paddingBottom: 110,
   },
   textInput: {
     height: 40,
