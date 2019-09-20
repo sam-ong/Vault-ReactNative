@@ -55,13 +55,14 @@ export default class Home extends React.Component {
     if (this.state.loading) return <ActivityIndicator />;
 
     return (
-      <View style={{ alignItems: "center"}}>
-      <FlatList 
-        data={Object.keys(list)}
-        renderItem={data => renderList(this.props, data, list)}
-        numColumns={2}
-        keyExtractor={item => item}
-      />
+      <View style={{ alignItems: "center" }}>
+        <FlatList
+          style={ styles. grid }
+          data={Object.keys(list)}
+          renderItem={data => renderList(this.props, data, list)}
+          numColumns={2}
+          keyExtractor={item => item}
+        />
       </View>
     );
   };
@@ -106,14 +107,7 @@ export const renderList = (props, data, list) => {
           source={{ uri: getW500ImageUrl(list[data.item]) }}
           style={styles.imageThumbnail}
         />
-
-    
-        
       </View>
     </TouchableOpacity>
   );
-
-
-
-  
 };

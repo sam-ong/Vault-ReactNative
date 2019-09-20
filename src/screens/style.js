@@ -18,13 +18,14 @@ export default {
     marginTop: 8,
     marginVertical: 15
   },
-
   imageThumbnail: {
     margin: 8,
     height: 270,
     width: 160,
     borderRadius: 4
-    
-    
+  },
+  grid: {
+    marginTop: 10,
+    marginBottom: 60,
   }
 }

@@ -90,7 +90,7 @@ export default class ShowDetails extends React.Component {
             <View style={styles.buttons}>
           
          
-            <Text>{"                    "}</Text>
+            <Text>{"                 "}</Text>
               {/* buttons for adding/removing from already watched */}
               {this.isInAlreadyWatched(show.id) ? (
                 <Icon
@@ -99,7 +99,7 @@ export default class ShowDetails extends React.Component {
                   name="eye-check-outline"
                   type="material-community"
                   color="#f50"
-                  size={15}
+                  size={18}
                   onPress={() => removeFromList("alreadyWatched", show)}
                 ></Icon>
               ) : (
@@ -109,7 +109,7 @@ export default class ShowDetails extends React.Component {
                   name="eye-plus-outline"
                   type="material-community"
                   color="#49b4b4"
-                  size={15}
+                  size={18}
                   onPress={() => addToList("alreadyWatched", show)}
                 ></Icon>
               )}
@@ -122,7 +122,7 @@ export default class ShowDetails extends React.Component {
                   name="check"
                   type="feather"
                   color="#f50"
-                  size={15}
+                  size={18}
                   onPress={() => removeFromList("watchList", show)}
                 ></Icon>
               ) : (
@@ -132,7 +132,7 @@ export default class ShowDetails extends React.Component {
                   name="plus"
                   type="feather"
                   color="#49b4b4"
-                  size={15}
+                  size={18}
                   onPress={() => addToList("watchList", show)}
                 ></Icon>
               )}
@@ -143,7 +143,7 @@ export default class ShowDetails extends React.Component {
                 name="align-left"
                 type="feather"
                 color="#49b4b4"
-                size={15}
+                size={18}
                 onPress={() =>
                   this.props.navigation.push("EpisodeList", { show })
                 }
