@@ -1,13 +1,20 @@
 import {StyleSheet} from 'react-native';
+import { fonts } from "../utils/fonts";
 export default {
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+   
   },
   segment: {
     paddingVertical: 6,
     paddingBottom: 110,
+    
+    
+  },
+  text: {
+    fontSize: 100
   },
   textInput: {
     height: 40,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, FlatList, ActivityIndicator } from 'react-native'
+import {   StyleSheet, View, FlatList, ActivityIndicator } from 'react-native'
 import { getSeason } from '../api/shows'
 import { renderSeasonItem } from '../components/shows'
 export default class EpisodeList extends React.Component {
@@ -44,7 +44,7 @@ export default class EpisodeList extends React.Component {
             <View style={{ flex: 1 }}>
                 {loading ?
                     <ActivityIndicator /> :
-                    <FlatList
+                    <FlatList style={ styles.list } 
                         data={seasons}
                         renderItem={(data) => renderSeasonItem(this.props, data)}
                         keyExtractor={(item) => {
@@ -63,3 +63,12 @@ export default class EpisodeList extends React.Component {
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    list: {
+    
+    },
+   
+  });
+  

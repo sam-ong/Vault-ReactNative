@@ -67,15 +67,17 @@ export default class Home extends React.Component {
     );
   };
 
+
+  
   render() {
     const { currentUser } = this.state;
     const segments = [
       {
-        title: "Already watched",
+        title: 'Already Watched',
         view: this.AlreadyWatched
       },
       {
-        title: "Watchlist",
+        title: 'Watchlist',
         view: this.WatchList
       }
     ];
