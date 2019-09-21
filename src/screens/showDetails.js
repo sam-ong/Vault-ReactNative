@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
   ScrollView
 } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, Button } from "react-native-elements";
 import { fetchShowInfo } from "../api/shows";
 import { getW500ImageUrl } from "../api/urls";
 import { addToList, removeFromList } from "../components/shows";
@@ -76,6 +76,7 @@ export default class ShowDetails extends React.Component {
           <View style={styles.container}>
             {/* <Text>{show.name}</Text> */}
 
+            {/* image displays */}
             <View style={styles.images}>
               <Image
                 source={{ uri: getW500ImageUrl(show.backdrop_path) }}
@@ -86,15 +87,14 @@ export default class ShowDetails extends React.Component {
                 style={styles.poster}
               />
             </View>
-            
+
+            {/* row of buttons */}
             <View style={styles.buttons}>
-          
-         
-            <Text>{"                 "}</Text>
+              <Text>{"                 "}</Text>
               {/* buttons for adding/removing from already watched */}
               {this.isInAlreadyWatched(show.id) ? (
                 <Icon
-                  style={{ paddingRight: 100, position: "absolute", }}
+                  style={{ paddingRight: 100, position: "absolute" }}
                   raised
                   name="eye-check-outline"
                   type="material-community"
@@ -104,7 +104,7 @@ export default class ShowDetails extends React.Component {
                 ></Icon>
               ) : (
                 <Icon
-                  style={{ paddingRight: 100,position: "absolute" }}
+                  style={{ paddingRight: 100, position: "absolute" }}
                   raised
                   name="eye-plus-outline"
                   type="material-community"
@@ -117,7 +117,7 @@ export default class ShowDetails extends React.Component {
               {/* buttons for adding/removing from watch list */}
               {this.isInWatchList(show.id) ? (
                 <Icon
-                style={{ paddingRight: 100,position: "absolute" }}
+                  style={{ paddingRight: 100, position: "absolute" }}
                   raised
                   name="check"
                   type="feather"
@@ -127,7 +127,7 @@ export default class ShowDetails extends React.Component {
                 ></Icon>
               ) : (
                 <Icon
-                style={{ paddingRight: 100,position: "absolute" }}
+                  style={{ paddingRight: 100, position: "absolute" }}
                   raised
                   name="plus"
                   type="feather"
@@ -136,8 +136,8 @@ export default class ShowDetails extends React.Component {
                   onPress={() => addToList("watchList", show)}
                 ></Icon>
               )}
-
               <Text>{"           "}</Text>
+              {/* button to view episode list */}
               <Icon
                 raised
                 name="align-left"
@@ -149,27 +149,55 @@ export default class ShowDetails extends React.Component {
                 }
               ></Icon>
             </View>
-            <View style={styles.description}>
-              {/* <Button
-            title="View recommended shows"
-            onPress={() =>
-              this.props.navigation.push("ViewRecommended", { show })
-            }
-          />
-          <Button
-            title="View similar shows"
-            onPress={() => this.props.navigation.push("ViewSimilar", { show })}
-          />
-          <Button
-            title="View episode list"
-            onPress={() => this.props.navigation.push("EpisodeList", { show })}
-          /> */}
 
+            {/* shows description including title, air year and overview */}
+            <View style={styles.description}>
               <Text style={styles.title}>{show.name}</Text>
               <Text style={styles.year}>{airDate} </Text>
               <Text style={styles.overview}>{show.overview}</Text>
+              <Button
+                rounded
+                buttonStyle={{
+                  paddingVertical: 20,
+                  borderRadius: 40,
+                  backgroundColor: 'transparent',
+                  borderColor: '#56D1BD',
+                  borderWidth: 2.5,
+                 
+                }}
+                style={styles.button}
+                title="View recommended shows"
+                titleStyle={{ 
+                  fontFamily: fonts.AvenirHeavy, 
+                  color: '#56D1BD',
+                  fontSize: 17
+                }}
+                onPress={() =>
+                  this.props.navigation.push("ViewRecommended", { show })
+                }
+              />
+              <Button
+              rounded
+              buttonStyle={{
+                paddingVertical: 20,
+                borderRadius: 40,
+                backgroundColor: 'transparent',
+                borderColor: '#56D1BD',
+                borderWidth: 2.5,
+               
+              }}
+              style={styles.button}
+              title="View similar shows"
+              titleStyle={{ 
+                fontFamily: fonts.AvenirHeavy, 
+                color: '#56D1BD',
+                fontSize: 17
+              }}
+                onPress={() =>
+                  this.props.navigation.push("ViewSimilar", { show })
+                }
+              />
             </View>
-           
           </View>
         </ScrollView>
       );
@@ -182,7 +210,7 @@ export default class ShowDetails extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center"
   },
   images: {
     alignItems: "center",
@@ -215,7 +243,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     flexDirection: "row",
     width: "100%",
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     shadowColor: "#000000",
     shadowOffset: { width: 0, height: 7 }, // change this for more shadow
     shadowOpacity: 0.2,
@@ -224,12 +252,13 @@ const styles = StyleSheet.create({
   },
   description: {
     zIndex: 0,
-    backgroundColor: "#FAFAFA", 
+    backgroundColor: "#FAFAFA",
     paddingVertical: 50,
     paddingHorizontal: 35,
     top: 50,
     flex: 1,
-    alignSelf: "stretch"
+    alignSelf: "stretch",
+    paddingBottom: 100
   },
   title: {
     color: "#404040",
@@ -247,7 +276,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 30,
     marginTop: 30,
-    marginBottom: 100,
+    marginBottom: 50,
     fontFamily: fonts.AvenirRegular
+  },
+  button: {
+    marginBottom: 20,
+    
   }
 });
