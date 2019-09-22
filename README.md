@@ -24,5 +24,7 @@ Use createSwitchNavigator instead of Switch Navigator, [here](https://medium.com
 ## Cannot read property Direction of undefined error
 https://doreentseng.github.io/cannot-read-property-direction-of-undefined/
 
-## Step to install dependencies for icons
-https://react-native-training.github.io/react-native-elements/docs/getting_started.html
+## External dependencies
+
+`yarn add react-native-sideswipe` and `yarn add react-native-elements`
+
