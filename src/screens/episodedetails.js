@@ -18,10 +18,7 @@ export default class EpisodeDetails extends React.Component {
       episode: this.props.navigation.getParam("episode"),
       id: this.props.navigation.getParam("show").show_id
     };
-   
   }
-
-
 
   render() {
     const { episode } = this.state;
@@ -46,17 +43,29 @@ export default class EpisodeDetails extends React.Component {
               style={styles.backdrop}
             />
             <View style={styles.buttons}>
-              {/* buttons for adding/removing from already watched */}
-
-              {/* button to view episode list */}
+            <Text>{"                           "}</Text>
+              {/* button to view show details */}
               <Icon
                 raised
-                name="align-left"
-                type="feather"
+                name="info"
+                type="entypo"
                 color="#49b4b4"
                 size={18}
-                onPress={() =>  this.props.navigation.push("ShowDetails", { id })
-      }                
+                onPress={() =>
+                  this.props.navigation.push("ShowDetails", { id })
+                }
+              ></Icon>
+              <Text>{"               "}</Text>
+                {/* button to share the episode (to be implemented) */}
+               <Icon
+                raised
+                name="md-share"
+                type="ionicon"
+                color="#49b4b4"
+                size={18}
+                onPress={() =>
+                  console.log("Sharing")
+                }
               ></Icon>
             </View>
             <View style={styles.description}>
@@ -82,10 +91,17 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     width: 400,
-    minHeight: 250
+    minHeight: 250,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9
   },
   buttons: {
-    alignItems: "center",
     paddingVertical: 15,
     flexDirection: "row",
     width: "100%",
