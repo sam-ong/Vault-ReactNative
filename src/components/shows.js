@@ -27,7 +27,6 @@ export const renderShowItem = (props, data) => {
       onPress={() => this.goToNextScreen(data.item.id)}
     >
       <View style={styles.listItemContainer}>
-        {/* <Text>{data.item.name}</Text> */}
         <Image
           source={{ uri: getW500ImageUrl(data.item.poster_path) }}
           style={style.imageThumbnail}
@@ -59,7 +58,8 @@ export const renderSeasonItem = (props, data) => {
 export const renderEpisodeItem = (props, data) => {
   goToNextScreen = episode => {
     return props.navigation.push("EpisodeDetails", {
-      episode: episode
+      episode: episode,
+      show: data.item
     });
   };
 

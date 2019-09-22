@@ -15,6 +15,7 @@ import { fonts } from "../utils/fonts";
 import firebase from "react-native-firebase";
 
 export default class ShowDetails extends React.Component {
+ 
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection("users");
@@ -158,19 +159,18 @@ export default class ShowDetails extends React.Component {
               <Button
                 rounded
                 buttonStyle={{
-                  paddingVertical: 20,
-                  borderRadius: 40,
-                  backgroundColor: 'transparent',
-                  borderColor: '#56D1BD',
-                  borderWidth: 2.5,
+                  paddingVertical: 15,
+                  backgroundColor: '#FFF',
+                  borderColor: '#C9C9C9',
+                  borderWidth: 1,
                  
                 }}
                 style={styles.button}
                 title="View recommended shows"
                 titleStyle={{ 
                   fontFamily: fonts.AvenirHeavy, 
-                  color: '#56D1BD',
-                  fontSize: 17
+                  color: '#575757',
+                  fontSize: 15
                 }}
                 onPress={() =>
                   this.props.navigation.push("ViewRecommended", { show })
@@ -179,19 +179,18 @@ export default class ShowDetails extends React.Component {
               <Button
               rounded
               buttonStyle={{
-                paddingVertical: 20,
-                borderRadius: 40,
-                backgroundColor: 'transparent',
-                borderColor: '#56D1BD',
-                borderWidth: 2.5,
+                paddingVertical: 15,
+                backgroundColor: '#FFF',
+                borderColor: '#C9C9C9',
+                borderWidth: 1,
                
               }}
               style={styles.button}
               title="View similar shows"
               titleStyle={{ 
                 fontFamily: fonts.AvenirHeavy, 
-                color: '#56D1BD',
-                fontSize: 17
+                color: '#575757',
+                fontSize: 15
               }}
                 onPress={() =>
                   this.props.navigation.push("ViewSimilar", { show })
@@ -281,6 +280,5 @@ const styles = StyleSheet.create({
   },
   button: {
     marginBottom: 20,
-    
   }
 });

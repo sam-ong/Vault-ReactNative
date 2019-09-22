@@ -11,8 +11,11 @@ import {
 import firebase from "react-native-firebase";
 import SegmentControl from "react-native-segment-control";
 import { getW500ImageUrl } from "../api/urls";
+import { fonts } from "../utils/fonts";
 import styles from "./style";
 export default class Home extends React.Component {
+
+
   constructor() {
     super();
     this.ref = firebase.firestore().collection("users");
@@ -24,7 +27,11 @@ export default class Home extends React.Component {
       watchList: [],
       alreadyWatched: []
     };
+
+    
   }
+
+  
 
   componentDidMount() {
     const { currentUser } = firebase.auth();
@@ -84,7 +91,7 @@ export default class Home extends React.Component {
 
     return (
       <View style={styles.segment}>
-        <SegmentControl segments={segments} />
+        <SegmentControl segments={segments} color="#49b4b4" fontFamily={fonts.AvenirHeavy} />
       </View>
     );
   }
@@ -99,7 +106,10 @@ export const renderList = (props, data, list) => {
     });
   };
 
+  
+
   return (
+   
     <TouchableOpacity
       style={{ backgroundColor: "transparent" }}
       onPress={() => this.goToNextScreen(data.item)}
