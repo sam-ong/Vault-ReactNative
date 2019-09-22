@@ -5,7 +5,12 @@ export default {
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
+  searchContainer: {
+      flex: 1,
+      alignItems: 'center',
+    },
   segment: {
     paddingVertical: 6,
     paddingBottom: 110,
@@ -34,4 +39,29 @@ export default {
     marginTop: 10,
     marginBottom: 60,
   },
+  missing: {
+    fontFamily: fonts.AvenirHeavy,
+    color: '#4F4F4F'
+  },
+  button: {
+    paddingVertical: 15,
+    backgroundColor: "#51cfb1",
+    borderRadius: 50,
+    width: '100%',
+    marginVertical: 20,
+    
+  },
+  buttonTitle: {
+      fontFamily: fonts.AvenirHeavy,
+      color: "white",
+      fontSize: 20,
+      letterSpacing: 4,
+  },
+  errorMessage: {
+    color: "#f53b57",
+    fontFamily: fonts.AvenirHeavy,
+    paddingHorizontal: 30,
+    paddingBottom: 20,
+
+  }
 }

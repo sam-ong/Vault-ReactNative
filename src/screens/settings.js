@@ -37,13 +37,7 @@ export default class Settings extends React.Component {
               color="#575757"
             />
           }
-          buttonStyle={{
-            paddingVertical: 15,
-            backgroundColor: "#FFF",
-            borderBottomColor: "#C9C9C9",
-            borderBottomWidth: 0.5,
-            justifyContent: "space-between"
-          }}
+          buttonStyle={ styles.button }
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#6E6E6E",
@@ -79,13 +73,7 @@ export default class Settings extends React.Component {
               color="#575757"
             />
           }
-          buttonStyle={{
-            paddingVertical: 15,
-            backgroundColor: "#FFF",
-            borderBottomColor: "#C9C9C9",
-            borderBottomWidth: 0.5,
-            justifyContent: "space-between"
-          }}
+          buttonStyle={ styles.button }
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#6E6E6E",
@@ -99,13 +87,7 @@ export default class Settings extends React.Component {
 <Button
           iconRight
           title="    Logout"
-          buttonStyle={{
-            paddingVertical: 15,
-            backgroundColor: "#FFF",
-            borderBottomColor: "#C9C9C9",
-            borderBottomWidth: 0.5,
-            justifyContent: "space-between"
-          }}
+          buttonStyle={ styles.button }
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#1B9CFC",
@@ -118,13 +100,7 @@ export default class Settings extends React.Component {
     <Button
           iconRight
           title="    Delete account"
-          buttonStyle={{
-            paddingVertical: 15,
-            backgroundColor: "#FFF",
-            borderBottomColor: "#C9C9C9",
-            borderBottomWidth: 0.5,
-            justifyContent: "space-between"
-          }}
+          buttonStyle={ styles.button }
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#f53b57",
@@ -220,5 +196,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomColor: "#C9C9C9",
     borderBottomWidth: 0.5,
+  },
+  button: {
+    paddingVertical: 15,
+    backgroundColor: "#FFF",
+    borderBottomColor: "#C9C9C9",
+    borderBottomWidth: 0.5,
+    justifyContent: "space-between"
   }
 });

@@ -1,7 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { Image, Text, TextInput, View } from 'react-native'
 import styles from './style'
 import firebase from 'react-native-firebase';
+import { Button } from "react-native-elements";
+
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null }
@@ -15,11 +17,11 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color:'#e93766', fontSize: 40}}>Login</Text>
-        {this.state.errorMessage &&
-          <Text style={{ color: 'red' }}>
-            {this.state.errorMessage}
-          </Text>}
+             <Image
+          style={{width: 180, height: 180, marginBottom: 50}}
+          source={require("../../assets/images/logo.png")}
+        />
+      
         <TextInput
           style={styles.textInput}
           autoCapitalize="none"
@@ -35,9 +37,17 @@ export default class Login extends React.Component {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Login" color="#e93766" onPress={this.handleLogin} />
+        <Button 
+         buttonStyle={ styles.button }
+         title="LOG IN" 
+         titleStyle= {styles.buttonTitle}
+         onPress={this.handleLogin} />
+           {this.state.errorMessage &&
+          <Text style={ styles.errorMessage }>
+            {this.state.errorMessage}
+          </Text>}
         <View>
-        <Text> Don't have an account? <Text onPress={() => this.props.navigation.navigate('SignUp')} style={{color:'#e93766', fontSize: 18}}> Sign Up </Text></Text>
+        <Text style= { styles.missing }>Don't have an account?<Text onPress={() => this.props.navigation.navigate('SignUp')} style={{color:'#51cfb1'}}> Sign Up </Text></Text>
         </View>
       </View>
     )

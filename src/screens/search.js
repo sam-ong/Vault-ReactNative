@@ -27,7 +27,7 @@ export default class Search extends React.Component {
     const { query, results, loading } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View style={styles.searchContainer}>
 
 <View style={{ paddingBottom: 20, width: '95%',  alignItems: 'center',}}>
         <TextInput
