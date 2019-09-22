@@ -36,6 +36,32 @@ export const renderShowItem = (props, data) => {
   );
 };
 
+
+//Show image thumbnail for side swipe view
+export const renderShowItemSwipe = (props, data) => {
+  //function to go to next screen
+  goToNextScreen = id => {
+    return props.navigation.push("ShowDetails", {
+      id: id
+    });
+    
+  };
+
+  return (
+    <TouchableOpacity
+      style={{ backgroundColor: "transparent" }}
+      onPress={() => this.goToNextScreen(data.item.id)}
+    >
+      <View>
+        <Image
+          source={{ uri: getW500ImageUrl(data.item.poster_path) }}
+          style={style.imageThumbnailSwipe}
+        />
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 //Display episode list
 export const renderSeasonItem = (props, data) => {
   if (!data.item) return;
@@ -129,5 +155,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#4f4f4f",
     backgroundColor: "#E3E3E3"
-  }
+  },
+  title: {
+    color: "#404040",
+    fontSize: 32,
+    marginBottom: 10,
+    fontFamily: fonts.AvenirHeavy
+  },
 });

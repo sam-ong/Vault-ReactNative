@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button, ActivityIndicator } from 'react-native'
+import { Text, TextInput, View, ActivityIndicator } from 'react-native'
+import { Button } from "react-native-elements";
 import styles from './style'
 import firebase from 'react-native-firebase';
 
@@ -51,13 +52,8 @@ export default class ChangePassword extends Component {
         const { errorMessage, loading, success } = this.state
         return (
             <View style={styles.container}>
-                <Text style={{ color: '#e93766', fontSize: 40 }}>Change password</Text>
-                {errorMessage && !loading && !success &&
-                    <Text style={{ color: 'red' }}>
-                        {this.state.errorMessage}
-                    </Text>}
-                {loading && <ActivityIndicator />}
-                {success && <Text>Succesfully changed password!</Text>}
+            
+          
                 <TextInput
                     secureTextEntry
                     placeholder="Current password"
@@ -82,7 +78,18 @@ export default class ChangePassword extends Component {
                     onChangeText={confirmNewPassword => this.setState({ confirmNewPassword })}
                     value={this.state.confirmNewPassword}
                 />
-                <Button title="Change password" color="#e93766" onPress={this.handleChangePassword} />
+                 <Button 
+         buttonStyle={ styles.button }
+         title="CHANGE PASSWORD" 
+         titleStyle= {styles.buttonTitle}
+         onPress={this.handleChangePassword} />
+               {errorMessage && !loading && !success &&
+                    <Text style={ styles.errorMessage }>
+                        {this.state.errorMessage}
+                    </Text>}
+                {loading && <ActivityIndicator />}
+                {success && <Text>Succesfully changed password!</Text>}
+               
             </View>
         )
     }

@@ -86,7 +86,7 @@ export default class Settings extends React.Component {
 
 <Button
           iconRight
-          title="    Logout"
+          title="    Log out"
           buttonStyle={ styles.button }
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
@@ -177,7 +177,8 @@ export function logout() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#F5F5F5",
   },
   title: {
     fontFamily: fonts.AvenirHeavy,
@@ -196,6 +197,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomColor: "#C9C9C9",
     borderBottomWidth: 0.5,
+    backgroundColor: "#FFF",
   },
   button: {
     paddingVertical: 15,

@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
   ScrollView
 } from "react-native";
-import { Icon, Button } from "react-native-elements";
+import { Icon, Button, Header } from "react-native-elements";
 import { fetchShowInfo } from "../api/shows";
 import { getW500ImageUrl } from "../api/urls";
 import { addToList, removeFromList } from "../components/shows";
@@ -15,6 +15,7 @@ import { fonts } from "../utils/fonts";
 import firebase from "react-native-firebase";
 
 export default class ShowDetails extends React.Component {
+  
  
   constructor(props) {
     super(props);
@@ -74,6 +75,7 @@ export default class ShowDetails extends React.Component {
       var airDate = show.first_air_date.substring(0, 4);
       return (
         <ScrollView>
+         
           <View style={styles.container}>
             {/* <Text>{show.name}</Text> */}
 

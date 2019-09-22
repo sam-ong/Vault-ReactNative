@@ -35,6 +35,12 @@ export default {
     width: 160,
     borderRadius: 4
   },
+  imageThumbnailSwipe: {
+    margin: 8,
+    height: 500,
+    width: 300,
+    borderRadius: 4
+  },
   grid: {
     marginTop: 10,
     marginBottom: 60,

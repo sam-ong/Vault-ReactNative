@@ -5,6 +5,7 @@ import { renderShowItem } from '../components/shows'
 import { fetchDiscoverResults } from '../api/search'
 import { fonts } from "../utils/fonts";
 
+
 export default class Discover extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +16,10 @@ export default class Discover extends React.Component {
       loading: true
     };
   }
+
+  static navigationOptions = {
+    title: 'Details',
+  };
 
   mapSelectionUrl(selection) {
     switch (selection) {
@@ -75,6 +80,7 @@ export default class Discover extends React.Component {
     var data = [["Popular", "Newest", "Oldest", "Top rated"]];
     return (
       <View style={styles.container}>
+           <View style={styles.menuContainer}>
         <DropdownMenu
           style={ styles.menu }
           bgColor={'white'}
@@ -84,6 +90,7 @@ export default class Discover extends React.Component {
           handler={(selection, row) => this.selectionHandler(data[selection][row])}
           data={data}
         >
+          
           {loading ? (
             <ActivityIndicator />
           ) :
@@ -97,6 +104,7 @@ export default class Discover extends React.Component {
             />)
           }
         </DropdownMenu>
+        </View>
       </View>
     );
   }
@@ -114,6 +122,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingVertical: 15,
    marginTop: 20,
+
   },
+  
 
 });

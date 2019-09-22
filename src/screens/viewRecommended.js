@@ -1,7 +1,9 @@
 import React from 'react'
-import { FlatList, View, ActivityIndicator } from 'react-native'
-import { renderShowItem } from '../components/shows'
+import { FlatList, View, ActivityIndicator, Dimensions, Card, Badge } from 'react-native'
+import { renderShowItemSwipe } from '../components/shows'
 import { fetchShowRecommendations } from '../api/shows'
+import SideSwipe from 'react-native-sideswipe';
+import { Carousel, AnimatedCarouselItem } from 'react-native-sideswipe'; 
 import styles from './style'
 
 export default class ViewRecommended extends React.Component {
@@ -10,7 +12,8 @@ export default class ViewRecommended extends React.Component {
         this.state = {
             page: 1,
             results: [],
-            loading: true
+            loading: true,
+            currentIndex: 0,
         };
     }
 
@@ -55,10 +58,11 @@ export default class ViewRecommended extends React.Component {
 
     render() {
         const { results, loading } = this.state;
+        const { width } = Dimensions.get('window');
         return (
             <View style={styles.container}>
 
-                {loading ? (
+                {/* {loading ? (
                     <ActivityIndicator />
                 ) :
                     (<FlatList
@@ -69,7 +73,21 @@ export default class ViewRecommended extends React.Component {
                         onEndReached={this._handleLoadMore}
                         onEndReachedThreshold={0.5}
                     />)
-                }
+                } */}
+
+<SideSwipe
+        index={this.state.currentIndex}
+
+  style={{ width, maxHeight: 500 }}
+          itemWidth={width - 60}
+          threshold={80}
+          contentOffset={12}
+        data={results}
+        onIndexChange={index =>
+          this.setState(() => ({ currentIndex: index }))
+        }
+        renderItem={(data) => renderShowItemSwipe(this.props, data)}
+      />
             </View>
         );
     }
