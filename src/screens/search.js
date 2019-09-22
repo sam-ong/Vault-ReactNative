@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  View,
-  Button,
-  TextInput,
-  FlatList,
-  ActivityIndicator
-} from "react-native";
+import { View, TextInput, FlatList, ActivityIndicator } from "react-native";
+import { Button, SearchBar, Icon } from "react-native-elements";
+
 import { fetchSearchResults } from "../api/search";
 import { renderShowItem } from "../components/shows";
 import styles from "./style";
@@ -25,26 +21,24 @@ export default class Search extends React.Component {
 
   render() {
     const { query, results, loading } = this.state;
-
     return (
       <View style={styles.searchContainer}>
+        <View style={{ paddingBottom: 15, width: "95%", alignItems: "center" }}>
 
-<View style={{ paddingBottom: 20, width: '95%',  alignItems: 'center',}}>
-        <TextInput
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Search for a title..."
-          onChangeText={query => this.setState({ query })}
-          value={query}
-        />
-       
-        <Button style={{ fontFamily: fonts.AvenirRegular }} title="Search" color="#49b4b4" onPress={this.handleSearch} />
-
+          <TextInput // search bar
+            style={styles.textInput}
+            autoCapitalize="none"
+            placeholder="Search for a title..."
+            onChangeText={query => this.setState({ query })}
+            value={query}
+            clearButtonMode="while-editing"
+            onSubmitEditing={this.handleSearch} // searches on enter
+          />
         </View>
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <FlatList 
+          <FlatList
             data={results}
             renderItem={data => renderShowItem(this.props, data)}
             numColumns={2}

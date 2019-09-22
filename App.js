@@ -21,7 +21,6 @@ import EpisodeDetails from "./src/screens/episodedetails";
 import ChangePassword from "./src/screens/changepassword";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-
 const initialLogin = createSwitchNavigator(
   {
     Loading,
@@ -39,7 +38,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: Home,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="home" size={25} color={tintColor} />
+          <FontAwesome name="home" size={28} color={tintColor} />
         )
       }
     },
@@ -47,7 +46,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: Discover,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
-          <FontAwesome name="compass" size={25} color={tintColor} />
+          <FontAwesome name="compass" size={28} color={tintColor} />
         )
       }
     },
@@ -72,16 +71,19 @@ const TabNavigator = createBottomTabNavigator(
     tabBarOptions: {
       showIcon: true,
       showLabel: false,
-      activeTintColor: "#49b4b4",
-      inactiveTintColor: "gray",
+      activeTintColor: "#51cfb1",
+      inactiveTintColor: "#9C9C9C",
       style: {
         height: 45,
-        paddingVertical: 10
-      }
-    },
-   
-   
-    
+        paddingVertical: 10,
+        shadowColor: "#000000",
+    shadowOffset: { width: 0, height: -5 }, // change this for more shadow
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    zIndex: 1 // ensure shadow gets rendered
+      },
+      
+    }
   }
 );
 

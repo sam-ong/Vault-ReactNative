@@ -23,8 +23,7 @@ export default class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text 
-        style= { styles.title }  >{"ABOUT"}</Text>
+        <Text style={styles.title}>{"ABOUT"}</Text>
 
         <Button
           iconRight
@@ -37,30 +36,32 @@ export default class Settings extends React.Component {
               color="#575757"
             />
           }
-          buttonStyle={ styles.button }
+          buttonStyle={styles.button}
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#6E6E6E",
             fontSize: 15
           }}
+          onPress={() => this.props.navigation.navigate("About")}
         />
 
+        <View style={styles.version}>
+          <Text
+            style={{
+              fontFamily: fonts.AvenirHeavy,
+              color: "#6E6E6E",
+              fontSize: 15,
+              paddingLeft: 5
+            }}
+          >
+            {"Version"}
+          </Text>
+          <Text style={{ fontFamily: fonts.AvenirRegular, color: "#8A8A8A" }}>
+            {"2.0"}
+          </Text>
+        </View>
 
-<View style={styles.version}>
-
-<Text style= { { fontFamily: fonts.AvenirHeavy,color: "#6E6E6E",
-            fontSize: 15, paddingLeft: 5 } } >{"Version"}</Text>
-<Text style= {{ fontFamily: fonts.AvenirRegular, color: "#8A8A8A" }} >{"2.0"}</Text>
-
-</View>
-
-
-
-
-
-     
-
-        <Text style= { styles.title } >{"ACCOUNT"}</Text>
+        <Text style={styles.title}>{"ACCOUNT"}</Text>
 
         <Button
           iconRight
@@ -73,7 +74,7 @@ export default class Settings extends React.Component {
               color="#575757"
             />
           }
-          buttonStyle={ styles.button }
+          buttonStyle={styles.button}
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#6E6E6E",
@@ -82,12 +83,10 @@ export default class Settings extends React.Component {
           onPress={() => this.props.navigation.navigate("ChangePassword")}
         />
 
- 
-
-<Button
+        <Button
           iconRight
           title="    Log out"
-          buttonStyle={ styles.button }
+          buttonStyle={styles.button}
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#1B9CFC",
@@ -95,12 +94,11 @@ export default class Settings extends React.Component {
           }}
           onPress={logout}
         />
-    
 
-    <Button
+        <Button
           iconRight
           title="    Delete account"
-          buttonStyle={ styles.button }
+          buttonStyle={styles.button}
           titleStyle={{
             fontFamily: fonts.AvenirHeavy,
             color: "#f53b57",
@@ -108,12 +106,6 @@ export default class Settings extends React.Component {
           }}
           onPress={deleteAccount}
         />
-    
-
-
-       
-
-        
       </View>
     );
   }
@@ -178,7 +170,7 @@ export function logout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F5F5F5"
   },
   title: {
     fontFamily: fonts.AvenirHeavy,
@@ -187,17 +179,17 @@ const styles = StyleSheet.create({
     color: "#404040",
     paddingTop: 30,
     paddingBottom: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   version: {
     justifyContent: "space-between",
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingHorizontal: 20,
     paddingVertical: 18,
     marginBottom: 20,
     borderBottomColor: "#C9C9C9",
     borderBottomWidth: 0.5,
-    backgroundColor: "#FFF",
+    backgroundColor: "#FFF"
   },
   button: {
     paddingVertical: 15,

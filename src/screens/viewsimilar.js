@@ -1,66 +1,62 @@
-import React from 'react'
-import { View, Dimensions } from 'react-native'
-import { renderShowItemSwipe } from '../components/shows'
-import { fetchSimilarShows } from '../api/shows'
+import React from "react";
+import { View, Dimensions } from "react-native";
+import { renderShowItemSwipe } from "../components/shows";
+import { fetchSimilarShows } from "../api/shows";
 import SideSwipe from "react-native-sideswipe";
-import styles from './style'
+import styles from "./style";
 
 export default class ViewSimilar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            page: 1,
-            results: [],
-            loading: true,
-            currentIndex: 0
-        };
-    }
-
-    componentDidMount() {
-        this._fetchAllShows()
-    }
-
-    async selectionHandler() {
-        await this.setState({ page: 1, loading: true })
-        this._fetchAllShows()
-    }
-
-    _handleLoadMore = () => {
-        this.setState(
-            (prevState, nextProps) => ({
-                page: prevState.page + 1
-            })
-        );
-
-        this._fetchAllShows();
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1,
+      results: [],
+      loading: true,
+      currentIndex: 0
     };
+  }
 
-    _fetchAllShows = () => {
-        const { page } = this.state;
-        const show = this.props.navigation.getParam('show');
+  componentDidMount() {
+    this._fetchAllShows();
+  }
 
-        fetchSimilarShows({ show: show, page: page }).then(data => {
-            results = data.results.filter(t => t.poster_path != null);
+  async selectionHandler() {
+    await this.setState({ page: 1, loading: true });
+    this._fetchAllShows();
+  }
 
-            this.setState((prevState, nextProps) => ({
-                results:
-                    page === 1
-                        ? results
-                        : [...this.state.results, ...results],
-                loading: false
-            }));
+  _handleLoadMore = () => {
+    this.setState((prevState, nextProps) => ({
+      page: prevState.page + 1
+    }));
 
-        }).catch(error => {
-            console.log(error)
-        })
-    }
+    this._fetchAllShows();
+  };
 
-    render() {
-        const { results, loading } = this.state;
-        const { width } = Dimensions.get("window");
-        return (
-            <View style={styles.container}>
- <SideSwipe
+  _fetchAllShows = () => {
+    const { page } = this.state;
+    const show = this.props.navigation.getParam("show");
+
+    fetchSimilarShows({ show: show, page: page })
+      .then(data => {
+        results = data.results.filter(t => t.poster_path != null);
+
+        this.setState((prevState, nextProps) => ({
+          results: page === 1 ? results : [...this.state.results, ...results],
+          loading: false
+        }));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  render() {
+    const { results, loading } = this.state;
+    const { width } = Dimensions.get("window");
+    return (
+      <View style={styles.container}>
+        <SideSwipe
           index={this.state.currentIndex}
           style={{ width, maxHeight: 500 }}
           itemWidth={width - 60}
@@ -72,9 +68,7 @@ export default class ViewSimilar extends React.Component {
           }
           renderItem={data => renderShowItemSwipe(this.props, data)}
         />
-
-
-            </View>
-        );
-    }
+      </View>
+    );
+  }
 }

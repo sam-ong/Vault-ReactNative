@@ -55,7 +55,6 @@ export default {
     borderRadius: 50,
     width: '100%',
     marginVertical: 20,
-    
   },
   buttonTitle: {
       fontFamily: fonts.AvenirHeavy,
@@ -68,6 +67,13 @@ export default {
     fontFamily: fonts.AvenirHeavy,
     paddingHorizontal: 30,
     paddingBottom: 20,
+  },
+  aboutText: {
+    textAlign: 'center',
+    fontFamily: fonts.AvenirRegular,
+    color: '#6B6B6B',
+    paddingHorizontal: 30,
+    fontSize: 20
 
   }
 }

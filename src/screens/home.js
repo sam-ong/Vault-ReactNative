@@ -4,14 +4,12 @@ import {
   Image,
   Text,
   View,
-  Button,
   FlatList,
   ActivityIndicator
 } from "react-native";
 import firebase from "react-native-firebase";
 import SegmentControl from "react-native-segment-control";
 import { getW500ImageUrl } from "../api/urls";
-import { fonts } from "../utils/fonts";
 import styles from "./style";
 export default class Home extends React.Component {
 
@@ -89,7 +87,7 @@ export default class Home extends React.Component {
 
     return (
       <View style={styles.segment}>
-        <SegmentControl segments={segments} color="#49b4b4" fontFamily={fonts.AvenirHeavy} />
+        <SegmentControl segments={segments} color="#51cfb1"/>
       </View>
     );
   }
