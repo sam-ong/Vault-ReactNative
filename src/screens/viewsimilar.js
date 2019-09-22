@@ -1,7 +1,8 @@
 import React from 'react'
-import { FlatList, View, ActivityIndicator } from 'react-native'
-import { renderShowItem } from '../components/shows'
+import { View, Dimensions } from 'react-native'
+import { renderShowItemSwipe } from '../components/shows'
 import { fetchSimilarShows } from '../api/shows'
+import SideSwipe from "react-native-sideswipe";
 import styles from './style'
 
 export default class ViewSimilar extends React.Component {
@@ -10,7 +11,8 @@ export default class ViewSimilar extends React.Component {
         this.state = {
             page: 1,
             results: [],
-            loading: true
+            loading: true,
+            currentIndex: 0
         };
     }
 
@@ -55,21 +57,21 @@ export default class ViewSimilar extends React.Component {
 
     render() {
         const { results, loading } = this.state;
+        const { width } = Dimensions.get("window");
         return (
             <View style={styles.container}>
-
-                {loading ? (
-                    <ActivityIndicator />
-                ) :
-                    (<FlatList
-                        data={results}
-                        renderItem={(data) => renderShowItem(this.props, data)}
-                        numColumns={2}
-                        keyExtractor={(item) => item.id}
-                        onEndReached={this._handleLoadMore}
-                        onEndReachedThreshold={0.5}
-                    />)
-                }
+ <SideSwipe
+          index={this.state.currentIndex}
+          style={{ width, maxHeight: 500 }}
+          itemWidth={width - 60}
+          threshold={80}
+          contentOffset={12}
+          data={results}
+          onIndexChange={index =>
+            this.setState(() => ({ currentIndex: index }))
+          }
+          renderItem={data => renderShowItemSwipe(this.props, data)}
+        />
 
 
             </View>
