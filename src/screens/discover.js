@@ -3,7 +3,7 @@ import { StyleSheet, FlatList, View, ActivityIndicator } from 'react-native'
 import DropdownMenu from 'react-native-dropdown-menu';
 import { renderShowItem } from '../components/shows'
 import { fetchDiscoverResults } from '../api/search'
-import styles from './style'
+import { fonts } from "../utils/fonts";
 
 export default class Discover extends React.Component {
   constructor(props) {
@@ -76,10 +76,11 @@ export default class Discover extends React.Component {
     return (
       <View style={styles.container}>
         <DropdownMenu
-          style={{ flex: 1 }}
+          style={ styles.menu }
           bgColor={'white'}
           tintColor={'#666666'}
-          activityTintColor={'green'}
+          activityTintColor={'#49b4b4'}
+          titleStyle={{  fontFamily: fonts.AvenirRegular, fontSize: 20 }}
           handler={(selection, row) => this.selectionHandler(data[selection][row])}
           data={data}
         >
@@ -96,8 +97,23 @@ export default class Discover extends React.Component {
             />)
           }
         </DropdownMenu>
-
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10,
+  },
+  menu: {
+    flex: 1,
+    fontSize: 20,
+    paddingVertical: 15,
+   marginTop: 20,
+  },
+
+});

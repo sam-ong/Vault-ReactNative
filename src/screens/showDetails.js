@@ -162,7 +162,7 @@ export default class ShowDetails extends React.Component {
                   paddingVertical: 15,
                   backgroundColor: '#FFF',
                   borderColor: '#C9C9C9',
-                  borderWidth: 1,
+                  borderWidth: 0.5,
                  
                 }}
                 style={styles.button}
@@ -182,7 +182,7 @@ export default class ShowDetails extends React.Component {
                 paddingVertical: 15,
                 backgroundColor: '#FFF',
                 borderColor: '#C9C9C9',
-                borderWidth: 1,
+                borderWidth: 0.5,
                
               }}
               style={styles.button}

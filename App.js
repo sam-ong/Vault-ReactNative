@@ -1,52 +1,100 @@
-import React, {Component} from 'react';
-import { createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import Loading from './src/screens/loading'
-import SignUp from './src/screens/signup'
-import Login from './src/screens/login'
-import Home from './src/screens/home'
-import Discover from './src/screens/discover'
-import Search from './src/screens/search'
-import ShowDetails from './src/screens/showDetails'
-import Settings from './src/screens/settings'
-import About from './src/screens/about'
-import ViewRecommended from './src/screens/viewRecommended'
-import ViewSimilar from './src/screens/viewsimilar'
-import EpisodeList from './src/screens/episodelist'
-import EpisodeDetails from './src/screens/episodedetails'
-import ChangePassword from './src/screens/changepassword'
+import React, { Icon } from "react";
+import {
+  createSwitchNavigator,
+  createAppContainer,
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
+import Loading from "./src/screens/loading";
+import SignUp from "./src/screens/signup";
+import Login from "./src/screens/login";
+import Home from "./src/screens/home";
+import Discover from "./src/screens/discover";
+import Search from "./src/screens/search";
+import ShowDetails from "./src/screens/showDetails";
+import Settings from "./src/screens/settings";
+import About from "./src/screens/about";
+import ViewRecommended from "./src/screens/viewRecommended";
+import ViewSimilar from "./src/screens/viewsimilar";
+import EpisodeList from "./src/screens/episodelist";
+import EpisodeDetails from "./src/screens/episodedetails";
+import ChangePassword from "./src/screens/changepassword";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 
 const initialLogin = createSwitchNavigator(
   {
     Loading,
     SignUp,
-    Login,
+    Login
   },
   {
-    initialRouteName: 'Loading'
+    initialRouteName: "Loading"
   }
-)
+);
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: Home,
-    Discover: Discover,
-    Search: Search,
-    Settings: Settings
-  }
-)
-
-const ShowsNavigator = createStackNavigator(
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="home" size={25} color={tintColor} />
+        )
+      }
+    },
+    Discover: {
+      screen: Discover,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="compass" size={25} color={tintColor} />
+        )
+      }
+    },
+    Search: {
+      screen: Search,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="search" size={25} color={tintColor} />
+        )
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome name="cog" size={25} color={tintColor} />
+        )
+      }
+    }
+  },
   {
-    TabNavigator,
-    ShowDetails,
-    ViewRecommended,
-    ViewSimilar,
-    EpisodeList,
-    EpisodeDetails,
-    ChangePassword,
-    About
+    tabBarOptions: {
+      showIcon: true,
+      showLabel: false,
+      activeTintColor: "#49b4b4",
+      inactiveTintColor: "gray",
+      style: {
+        height: 45,
+        paddingVertical: 10
+      }
+    },
+   
+   
+    
   }
-)
+);
+
+const ShowsNavigator = createStackNavigator({
+  TabNavigator,
+  ShowDetails,
+  ViewRecommended,
+  ViewSimilar,
+  EpisodeList,
+  EpisodeDetails,
+  ChangePassword,
+  About
+});
 
 const AppNavigator = createSwitchNavigator(
   {
@@ -54,10 +102,10 @@ const AppNavigator = createSwitchNavigator(
     ShowsNavigator
   },
   {
-    initialRouteName: 'initialLogin'
+    initialRouteName: "initialLogin"
   }
-)
+);
 
 const App = createAppContainer(AppNavigator);
 
-export default App
+export default App;
