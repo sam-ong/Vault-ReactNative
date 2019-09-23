@@ -12,7 +12,7 @@ export default class Settings extends React.Component {
 
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? "Home" : "Login");
+      this.props.navigation.navigate(user ? "Settings" : "Login");
     });
   }
 

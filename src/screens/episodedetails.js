@@ -98,8 +98,7 @@ const styles = StyleSheet.create({
       height: 4
     },
     shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    elevation: 9
+    shadowRadius: 5.46
   },
   buttons: {
     paddingVertical: 15,

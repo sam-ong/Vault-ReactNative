@@ -13,7 +13,6 @@ import { getW500ImageUrl } from "../api/urls";
 import styles from "./style";
 export default class Home extends React.Component {
 
-
   constructor() {
     super();
     this.ref = firebase.firestore().collection("users");
@@ -95,20 +94,11 @@ export default class Home extends React.Component {
 
 export const renderList = (props, data, list) => {
   const { navigate } = props.navigation;
-  //Function to go to next screen
-  goToNextScreen = id => {
-    return navigate("ShowDetails", {
-      id: id
-    });
-  };
-
-  
 
   return (
-   
     <TouchableOpacity
       style={{ backgroundColor: "transparent" }}
-      onPress={() => this.goToNextScreen(data.item)}
+      onPress={() => navigate("ShowDetails", {id: data.item})}
     >
       <View style={styles.container}>
         <Image

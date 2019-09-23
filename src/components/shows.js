@@ -14,17 +14,12 @@ import { fonts } from "../utils/fonts";
 
 //Show image thumbnail for grid view
 export const renderShowItem = (props, data) => {
-  //function to go to next screen
-  goToNextScreen = id => {
-    return props.navigation.push("ShowDetails", {
-      id: id
-    });
-  };
+  const { navigate } = props.navigation;
 
   return (
     <TouchableOpacity
       style={{ backgroundColor: "transparent" }}
-      onPress={() => this.goToNextScreen(data.item.id)}
+      onPress={() => navigate("ShowDetails", {id: data.item})}
     >
       <View style={styles.listItemContainer}>
         <Image
