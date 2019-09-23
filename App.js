@@ -83,6 +83,9 @@ const TabNavigator = createBottomTabNavigator(
     zIndex: 1 // ensure shadow gets rendered
       },
       
+    },
+    navigationOptions: {
+      title: "Vault"
     }
   }
 );

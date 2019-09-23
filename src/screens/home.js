@@ -2,7 +2,6 @@ import React from "react";
 import {
   TouchableOpacity,
   Image,
-  Text,
   View,
   FlatList,
   ActivityIndicator
@@ -25,8 +24,6 @@ export default class Home extends React.Component {
       alreadyWatched: []
     };
   }
-
-  
 
   componentDidMount() {
     const { currentUser } = firebase.auth();
@@ -59,7 +56,7 @@ export default class Home extends React.Component {
     return (
       <View style={{ alignItems: "center" }}>
         <FlatList
-          style={ styles. grid }
+          style={styles.grid}
           data={Object.keys(list)}
           renderItem={data => renderList(this.props, data, list)}
           numColumns={2}
@@ -70,7 +67,7 @@ export default class Home extends React.Component {
   };
 
 
-  
+
   render() {
     const { currentUser } = this.state;
     const segments = [
@@ -86,7 +83,7 @@ export default class Home extends React.Component {
 
     return (
       <View style={styles.segment}>
-        <SegmentControl segments={segments} color="#51cfb1"/>
+        <SegmentControl segments={segments} color="#51cfb1" />
       </View>
     );
   }
@@ -98,7 +95,7 @@ export const renderList = (props, data, list) => {
   return (
     <TouchableOpacity
       style={{ backgroundColor: "transparent" }}
-      onPress={() => navigate("ShowDetails", {id: data.item})}
+      onPress={() => navigate("ShowDetails", { id: data.item })}
     >
       <View style={styles.container}>
         <Image
