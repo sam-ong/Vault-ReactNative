@@ -72,7 +72,7 @@ const TabNavigator = createBottomTabNavigator(
       showIcon: true,
       showLabel: false,
       activeTintColor: "#51cfb1",
-      inactiveTintColor: "#A1A1A1",
+      inactiveTintColor: "#B0B0B0",
       style: {
         height: 45,
         paddingVertical: 10,

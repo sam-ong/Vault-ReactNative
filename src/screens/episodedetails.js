@@ -38,12 +38,12 @@ export default class EpisodeDetails extends React.Component {
       return (
         <ScrollView>
           <View style={styles.container}>
-            <Image
+            <Image // image display of episode still
               source={{ uri: getW500ImageUrl(episode.still_path) }}
               style={styles.backdrop}
             />
             <View style={styles.buttons}>
-            <Text>{"                           "}</Text>
+              <Text>{"                           "}</Text>
               {/* button to view show details */}
               <Icon
                 raised
@@ -56,18 +56,17 @@ export default class EpisodeDetails extends React.Component {
                 }
               ></Icon>
               <Text>{"               "}</Text>
-                {/* button to share the episode (to be implemented) */}
-               <Icon
+              {/* button to share the episode (to be implemented) */}
+              <Icon
                 raised
                 name="md-share"
                 type="ionicon"
                 color="#49b4b4"
                 size={18}
-                onPress={() =>
-                  console.log("Sharing")
-                }
+                onPress={() => console.log("Sharing")}
               ></Icon>
             </View>
+            {/* episode description */}
             <View style={styles.description}>
               <Text style={styles.title}>{episode.name}</Text>
               <Text style={styles.year}>{date.makeDate()} </Text>

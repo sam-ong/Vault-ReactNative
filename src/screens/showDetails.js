@@ -15,8 +15,6 @@ import { fonts } from "../utils/fonts";
 import firebase from "react-native-firebase";
 
 export default class ShowDetails extends React.Component {
-  
- 
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection("users");
@@ -33,9 +31,7 @@ export default class ShowDetails extends React.Component {
 
   componentDidMount() {
     this.fetchShowDetails(this.state.id);
-
     const { currentUser } = firebase.auth();
-
     this.unsubscribe = this.ref.doc(currentUser.uid).onSnapshot(doc => {
       this.setState({
         watchList: doc.data().watchList,
@@ -49,6 +45,7 @@ export default class ShowDetails extends React.Component {
     this.unsubscribe();
   }
 
+  // get the show details associated with given show id
   fetchShowDetails(id) {
     fetchShowInfo({ id: id })
       .then(data => {
@@ -61,10 +58,12 @@ export default class ShowDetails extends React.Component {
       });
   }
 
+  // check if show is in watchlist
   isInWatchList(id) {
     return this.state.watchList[id];
   }
 
+  // check if show is in already watched list
   isInAlreadyWatched(id) {
     return this.state.alreadyWatched[id];
   }
@@ -75,10 +74,7 @@ export default class ShowDetails extends React.Component {
       var airDate = show.first_air_date.substring(0, 4);
       return (
         <ScrollView>
-         
           <View style={styles.container}>
-            {/* <Text>{show.name}</Text> */}
-
             {/* image displays */}
             <View style={styles.images}>
               <Image
@@ -158,42 +154,24 @@ export default class ShowDetails extends React.Component {
               <Text style={styles.title}>{show.name}</Text>
               <Text style={styles.year}>{airDate} </Text>
               <Text style={styles.overview}>{show.overview}</Text>
+
+              {/* buttons for view recommended and similar shows pages */}
               <Button
                 rounded
-                buttonStyle={{
-                  paddingVertical: 15,
-                  backgroundColor: '#FFF',
-                  borderColor: '#C9C9C9',
-                  borderWidth: 0.5,
-                 
-                }}
+                buttonStyle={styles.buttonStyle}
                 style={styles.button}
                 title="View recommended shows"
-                titleStyle={{ 
-                  fontFamily: fonts.AvenirHeavy, 
-                  color: '#575757',
-                  fontSize: 15
-                }}
+                titleStyle={styles.titleStyle}
                 onPress={() =>
                   this.props.navigation.push("ViewRecommended", { show })
                 }
               />
               <Button
-              rounded
-              buttonStyle={{
-                paddingVertical: 15,
-                backgroundColor: '#FFF',
-                borderColor: '#C9C9C9',
-                borderWidth: 0.5,
-               
-              }}
-              style={styles.button}
-              title="View similar shows"
-              titleStyle={{ 
-                fontFamily: fonts.AvenirHeavy, 
-                color: '#575757',
-                fontSize: 15
-              }}
+                rounded
+                buttonStyle={styles.buttonStyle}
+                style={styles.button}
+                title="View similar shows"
+                titleStyle={styles.titleStyle}
                 onPress={() =>
                   this.props.navigation.push("ViewSimilar", { show })
                 }
@@ -251,6 +229,17 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     zIndex: 1 // ensure shadow gets rendered
   },
+  buttonStyle: {
+    paddingVertical: 15,
+    backgroundColor: "#FFF",
+    borderColor: "#C9C9C9",
+    borderWidth: 0.5
+  },
+  titleStyle: {
+    fontFamily: fonts.AvenirHeavy,
+    color: "#575757",
+    fontSize: 15
+  },
   description: {
     zIndex: 0,
     backgroundColor: "#FAFAFA",
@@ -281,6 +270,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.AvenirRegular
   },
   button: {
-    marginBottom: 20,
+    marginBottom: 20
   }
 });

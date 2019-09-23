@@ -2,7 +2,6 @@ import React from "react";
 import {
   TouchableOpacity,
   Image,
-  Text,
   View,
   FlatList,
   ActivityIndicator
@@ -12,12 +11,10 @@ import SegmentControl from "react-native-segment-control";
 import { getW500ImageUrl } from "../api/urls";
 import styles from "./style";
 export default class Home extends React.Component {
-
   constructor() {
     super();
     this.ref = firebase.firestore().collection("users");
     this.unsubscribe = null;
-
     this.state = {
       currentUser: null,
       loading: true,
@@ -26,12 +23,11 @@ export default class Home extends React.Component {
     };
   }
 
-  
-
   componentDidMount() {
     const { currentUser } = firebase.auth();
     this.setState({ currentUser: currentUser });
 
+    // get the show lists of current logged in user
     this.unsubscribe = this.ref.doc(currentUser.uid).onSnapshot(doc => {
       this.setState({
         watchList: doc.data().watchList,
@@ -58,8 +54,8 @@ export default class Home extends React.Component {
 
     return (
       <View style={{ alignItems: "center" }}>
-        <FlatList
-          style={ styles. grid }
+        <FlatList // arrange show lists in a grid view
+          style={styles.grid}
           data={Object.keys(list)}
           renderItem={data => renderList(this.props, data, list)}
           numColumns={2}
@@ -69,24 +65,23 @@ export default class Home extends React.Component {
     );
   };
 
-
-  
   render() {
-    const { currentUser } = this.state;
+    // separate lists into segments
     const segments = [
       {
-        title: 'Already Watched',
+        title: "Already Watched",
         view: this.AlreadyWatched
       },
       {
-        title: 'Watchlist',
+        title: "Watchlist",
         view: this.WatchList
       }
     ];
 
+    // render the segments
     return (
       <View style={styles.segment}>
-        <SegmentControl segments={segments} color="#51cfb1"/>
+        <SegmentControl segments={segments} color="#51cfb1" />
       </View>
     );
   }
@@ -96,10 +91,12 @@ export const renderList = (props, data, list) => {
   const { navigate } = props.navigation;
 
   return (
+    // change page to respective show details page when image touched
     <TouchableOpacity
       style={{ backgroundColor: "transparent" }}
-      onPress={() => navigate("ShowDetails", {id: data.item})}
+      onPress={() => navigate("ShowDetails", { id: data.item })}
     >
+      {/* display image thumbnails */}
       <View style={styles.container}>
         <Image
           source={{ uri: getW500ImageUrl(list[data.item]) }}

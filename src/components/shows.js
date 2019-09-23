@@ -31,7 +31,6 @@ export const renderShowItem = (props, data) => {
   );
 };
 
-
 //Show image thumbnail for side swipe view
 export const renderShowItemSwipe = (props, data) => {
   //function to go to next screen
@@ -39,7 +38,6 @@ export const renderShowItemSwipe = (props, data) => {
     return props.navigation.push("ShowDetails", {
       id: id
     });
-
   };
 
   return (
@@ -47,19 +45,23 @@ export const renderShowItemSwipe = (props, data) => {
       style={{ backgroundColor: "transparent" }}
       onPress={() => this.goToNextScreen(data.item.id)}
     >
-      <View style={{
-        shadowColor: "#000000",
-        shadowOffset: { width: 0, height: 7 }, // change this for more shadow
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-      }}>
+      <View
+        style={{
+          shadowColor: "#000000",
+          shadowOffset: { width: 0, height: 7 }, // change this for more shadow
+          shadowOpacity: 0.2,
+          shadowRadius: 3
+        }}
+      >
         <Image
           source={{ uri: getW500ImageUrl(data.item.poster_path) }}
           style={style.imageThumbnailSwipe}
         />
       </View>
       <Text style={styles.title}>{data.item.name}</Text>
-      <Text style={styles.year}>{data.item.first_air_date.substring(0, 4)}</Text>
+      <Text style={styles.year}>
+        {data.item.first_air_date.substring(0, 4)}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -165,14 +167,12 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontFamily: fonts.AvenirHeavy,
     maxWidth: 290,
-    paddingLeft: 20,
+    paddingLeft: 15
   },
   year: {
     color: "#AAAAAA",
     fontSize: 20,
     fontFamily: fonts.AvenirHeavy,
-    paddingLeft: 20,
-
-  },
-
+    paddingLeft: 15
+  }
 });

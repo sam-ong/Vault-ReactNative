@@ -1,11 +1,11 @@
-import React from 'react'
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
-import firebase from 'react-native-firebase';
+import React from "react";
+import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
+import firebase from "react-native-firebase";
 export default class Loading extends React.Component {
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'Home' : 'Login')
-    })
+      this.props.navigation.navigate(user ? "Home" : "Login");
+    });
   }
 
   componentWillUnmount() {
@@ -14,14 +14,17 @@ export default class Loading extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}><Text style={{color:'#e93766', fontSize: 40}}>Loading</Text><ActivityIndicator color='#e93766' size="large" /></View>
-    )
+      <View style={styles.container}>
+        <Text style={{ color: "#e93766", fontSize: 40 }}>Loading</Text>
+        <ActivityIndicator color="#e93766" size="large" />
+      </View>
+    );
   }
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   }
-})
+});
