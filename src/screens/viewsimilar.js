@@ -37,6 +37,7 @@ export default class ViewSimilar extends React.Component {
     const { page } = this.state;
     const show = this.props.navigation.getParam("show");
 
+    // retrive similar shows based on current show
     fetchSimilarShows({ show: show, page: page })
       .then(data => {
         results = data.results.filter(t => t.poster_path != null);
@@ -52,11 +53,11 @@ export default class ViewSimilar extends React.Component {
   };
 
   render() {
-    const { results, loading } = this.state;
+    const { results } = this.state;
     const { width } = Dimensions.get("window");
     return (
       <View style={styles.container}>
-        <SideSwipe
+        <SideSwipe // side swipe of similar shows
           index={this.state.currentIndex}
           style={{ width, maxHeight: 500 }}
           itemWidth={width - 60}

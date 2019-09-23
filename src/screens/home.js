@@ -11,12 +11,10 @@ import SegmentControl from "react-native-segment-control";
 import { getW500ImageUrl } from "../api/urls";
 import styles from "./style";
 export default class Home extends React.Component {
-
   constructor() {
     super();
     this.ref = firebase.firestore().collection("users");
     this.unsubscribe = null;
-
     this.state = {
       currentUser: null,
       loading: true,
@@ -29,6 +27,7 @@ export default class Home extends React.Component {
     const { currentUser } = firebase.auth();
     this.setState({ currentUser: currentUser });
 
+    // get the show lists of current logged in user
     this.unsubscribe = this.ref.doc(currentUser.uid).onSnapshot(doc => {
       this.setState({
         watchList: doc.data().watchList,
@@ -55,7 +54,7 @@ export default class Home extends React.Component {
 
     return (
       <View style={{ alignItems: "center" }}>
-        <FlatList
+        <FlatList // arrange show lists in a grid view
           style={styles.grid}
           data={Object.keys(list)}
           renderItem={data => renderList(this.props, data, list)}
@@ -66,21 +65,20 @@ export default class Home extends React.Component {
     );
   };
 
-
-
   render() {
-    const { currentUser } = this.state;
+    // separate lists into segments
     const segments = [
       {
-        title: 'Already Watched',
+        title: "Already Watched",
         view: this.AlreadyWatched
       },
       {
-        title: 'Watchlist',
+        title: "Watchlist",
         view: this.WatchList
       }
     ];
 
+    // render the segments
     return (
       <View style={styles.segment}>
         <SegmentControl segments={segments} color="#51cfb1" />
@@ -93,10 +91,12 @@ export const renderList = (props, data, list) => {
   const { navigate } = props.navigation;
 
   return (
+    // change page to respective show details page when image touched
     <TouchableOpacity
       style={{ backgroundColor: "transparent" }}
       onPress={() => navigate("ShowDetails", { id: data.item })}
     >
+      {/* display image thumbnails */}
       <View style={styles.container}>
         <Image
           source={{ uri: getW500ImageUrl(list[data.item]) }}

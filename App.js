@@ -72,17 +72,17 @@ const TabNavigator = createBottomTabNavigator(
       showIcon: true,
       showLabel: false,
       activeTintColor: "#51cfb1",
-      inactiveTintColor: "#A1A1A1",
+      inactiveTintColor: "#B0B0B0",
       style: {
         height: 45,
         paddingVertical: 10,
         shadowColor: "#000000",
-    shadowOffset: { width: 0, height: -5 }, // change this for more shadow
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    zIndex: 1 // ensure shadow gets rendered
+        shadowOffset: { width: 0, height: -5 }, // change this for more shadow
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        zIndex: 1 // ensure shadow gets rendered
       },
-      
+
     },
     navigationOptions: {
       title: "Vault"

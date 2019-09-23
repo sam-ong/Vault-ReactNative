@@ -40,6 +40,8 @@ export default class ViewRecommended extends React.Component {
     const { page } = this.state;
     const show = this.props.navigation.getParam("show");
 
+
+    // retrive show recommendations based on current show
     fetchShowRecommendations({ show: show, page: page })
       .then(data => {
         results = data.results.filter(t => t.poster_path != null);
@@ -55,11 +57,11 @@ export default class ViewRecommended extends React.Component {
   };
 
   render() {
-    const { results, loading } = this.state;
+    const { results } = this.state;
     const { width } = Dimensions.get("window");
     return (
       <View style={styles.container}>
-        <SideSwipe
+        <SideSwipe // side swipe of recommended shows
           index={this.state.currentIndex}
           style={{ width, maxHeight: 500 }}
           itemWidth={width - 60}

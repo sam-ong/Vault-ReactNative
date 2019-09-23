@@ -1,4 +1,3 @@
-import {StyleSheet} from 'react-native';
 import { fonts } from "../utils/fonts";
 
 export default {
@@ -6,6 +5,7 @@ export default {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#FAFAFA'
   },
   searchContainer: {
       flex: 1,
@@ -40,7 +40,6 @@ export default {
     height: 400,
     width: 300,
     borderRadius: 4,
-    
   },
   grid: {
     marginTop: 10,
@@ -59,15 +58,17 @@ export default {
   },
   buttonTitle: {
       fontFamily: fonts.AvenirHeavy,
+      fontWeight: '900',
       color: "white",
       fontSize: 20,
-      letterSpacing: 4,
+      letterSpacing: 3,
   },
   errorMessage: {
     color: "#f53b57",
     fontFamily: fonts.AvenirHeavy,
     paddingHorizontal: 30,
     paddingBottom: 20,
+    textAlign: 'center',
   },
   successMessage: {
     color: "#51cfb1",
@@ -79,7 +80,7 @@ export default {
     fontFamily: fonts.AvenirRegular,
     color: '#6B6B6B',
     paddingHorizontal: 30,
-    fontSize: 20
-
+    fontSize: 20,
+    lineHeight: 30,
   }
 }

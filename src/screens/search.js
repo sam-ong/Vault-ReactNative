@@ -1,11 +1,8 @@
 import React from "react";
 import { View, TextInput, FlatList, ActivityIndicator } from "react-native";
-import { Button, SearchBar, Icon } from "react-native-elements";
-
 import { fetchSearchResults } from "../api/search";
 import { renderShowItem } from "../components/shows";
 import styles from "./style";
-import { fonts } from "../utils/fonts";
 
 export default class Search extends React.Component {
   constructor() {
@@ -24,7 +21,6 @@ export default class Search extends React.Component {
     return (
       <View style={styles.searchContainer}>
         <View style={{ paddingBottom: 15, width: "95%", alignItems: "center" }}>
-
           <TextInput // search bar
             style={styles.textInput}
             autoCapitalize="none"
@@ -32,13 +28,13 @@ export default class Search extends React.Component {
             onChangeText={query => this.setState({ query })}
             value={query}
             clearButtonMode="while-editing"
-            onSubmitEditing={this.handleSearch} // searches on enter
+            onSubmitEditing={this.handleSearch} // performs search on enter
           />
         </View>
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <FlatList
+          <FlatList // arranges search results in a grid view
             data={results}
             renderItem={data => renderShowItem(this.props, data)}
             numColumns={2}
@@ -64,6 +60,7 @@ export default class Search extends React.Component {
     this.fetchResults();
   }
 
+  // retrives shows matching search query
   fetchResults() {
     const { query, page } = this.state;
     fetchSearchResults({ page, query }).then(data => {

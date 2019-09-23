@@ -23,8 +23,10 @@ export default class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {/* about section */}
         <Text style={styles.title}>{"ABOUT"}</Text>
 
+        {/* about page */}
         <Button
           iconRight
           title="    About"
@@ -45,6 +47,7 @@ export default class Settings extends React.Component {
           onPress={() => this.props.navigation.navigate("About")}
         />
 
+        {/* version information */}
         <View style={styles.version}>
           <Text
             style={{
@@ -61,8 +64,10 @@ export default class Settings extends React.Component {
           </Text>
         </View>
 
+        {/* account section */}
         <Text style={styles.title}>{"ACCOUNT"}</Text>
 
+        {/* change password page */}
         <Button
           iconRight
           title="    Change password"
@@ -83,6 +88,7 @@ export default class Settings extends React.Component {
           onPress={() => this.props.navigation.navigate("ChangePassword")}
         />
 
+        {/* log out */}
         <Button
           iconRight
           title="    Log out"
@@ -95,6 +101,7 @@ export default class Settings extends React.Component {
           onPress={logout}
         />
 
+        {/* delete account */}
         <Button
           iconRight
           title="    Delete account"
@@ -111,6 +118,7 @@ export default class Settings extends React.Component {
   }
 }
 
+// delete account popup
 export function deleteAccount() {
   Alert.alert(
     "Confirm delete",
@@ -132,6 +140,7 @@ export function deleteAccount() {
   );
 }
 
+// delete all data associated with account
 export function deleteUserDetails() {
   this.ref = firebase
     .firestore()
@@ -147,18 +156,20 @@ export function deleteUserDetails() {
     });
 }
 
+// delete account
 export function deleteAuthAccount() {
   firebase
     .auth()
     .currentUser.delete()
     .then(function() {
-      alert("Successfully deleted account.");
+      alert("Successfully deleted account."); // success!
     })
     .catch(function(error) {
-      console.error("Error deleting account: " + error.message);
+      console.error("Error deleting account: " + error.message); // error
     });
 }
 
+// handle logging out
 export function logout() {
   firebase
     .auth()
