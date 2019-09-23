@@ -37,7 +37,7 @@ export default {
   },
   imageThumbnailSwipe: {
     margin: 8,
-    height: 500,
+    height: 400,
     width: 300,
     borderRadius: 4
   },

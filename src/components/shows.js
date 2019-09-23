@@ -57,6 +57,8 @@ export const renderShowItemSwipe = (props, data) => {
           source={{ uri: getW500ImageUrl(data.item.poster_path) }}
           style={style.imageThumbnailSwipe}
         />
+          <Text style={ styles.title }>{data.item.name}</Text> 
+          <Text style={ styles.year }>{ data.item.first_air_date.substring(0,4) }</Text>
       </View>
     </TouchableOpacity>
   );
@@ -159,7 +161,18 @@ const styles = StyleSheet.create({
   title: {
     color: "#404040",
     fontSize: 32,
-    marginBottom: 10,
-    fontFamily: fonts.AvenirHeavy
+    marginTop: 10,
+    marginBottom: 5,
+    fontFamily: fonts.AvenirHeavy,
+    maxWidth: 290,
+    paddingLeft: 20,
   },
+  year: {
+    color: "#AAAAAA",
+    fontSize: 20,
+    fontFamily: fonts.AvenirHeavy,
+    paddingLeft: 20,
+
+  },
+  
 });
