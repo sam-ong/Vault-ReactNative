@@ -52,14 +52,17 @@ export const renderShowItemSwipe = (props, data) => {
       style={{ backgroundColor: "transparent" }}
       onPress={() => this.goToNextScreen(data.item.id)}
     >
-      <View>
+      <View style= {{ shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 7 }, // change this for more shadow
+    shadowOpacity: 0.2,
+    shadowRadius: 3,}}>
         <Image
           source={{ uri: getW500ImageUrl(data.item.poster_path) }}
           style={style.imageThumbnailSwipe}
         />
+        </View>
           <Text style={ styles.title }>{data.item.name}</Text> 
           <Text style={ styles.year }>{ data.item.first_air_date.substring(0,4) }</Text>
-      </View>
     </TouchableOpacity>
   );
 };

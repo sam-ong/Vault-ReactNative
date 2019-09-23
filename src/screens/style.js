@@ -39,7 +39,8 @@ export default {
     margin: 8,
     height: 400,
     width: 300,
-    borderRadius: 4
+    borderRadius: 4,
+    
   },
   grid: {
     marginTop: 10,
@@ -67,6 +68,11 @@ export default {
     fontFamily: fonts.AvenirHeavy,
     paddingHorizontal: 30,
     paddingBottom: 20,
+  },
+  successMessage: {
+    color: "#51cfb1",
+    fontFamily: fonts.AvenirHeavy,
+    paddingHorizontal: 30,
   },
   aboutText: {
     textAlign: 'center',

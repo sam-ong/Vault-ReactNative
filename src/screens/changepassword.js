@@ -22,7 +22,6 @@ export default class ChangePassword extends Component {
                 this.setState({ loading: true })
                 this.updatePassword(this.state.newPassword).then(
                     (u) => {
-                        // this.navCtrl.setRoot(TabsPage, { tabIndex: 3 })
                         this.setState({ success: true, loading: false })
                     },
                     (error) => {
@@ -88,7 +87,7 @@ export default class ChangePassword extends Component {
                         {this.state.errorMessage}
                     </Text>}
                 {loading && <ActivityIndicator />}
-                {success && <Text>Succesfully changed password!</Text>}
+                {success && <Text style={styles.successMessage}>Succesfully changed password!</Text>}
                
             </View>
         )

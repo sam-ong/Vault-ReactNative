@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     borderColor: "#FFFFFF"
   },
   buttons: {
-    top: 50,
+    top: 46,
     alignItems: "center",
     paddingTop: 10,
     paddingBottom: 15,
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FAFAFA",
     paddingVertical: 50,
     paddingHorizontal: 35,
-    top: 50,
+    top: 45,
     flex: 1,
     alignSelf: "stretch",
     paddingBottom: 100
