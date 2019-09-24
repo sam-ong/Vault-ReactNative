@@ -93,8 +93,18 @@ const TabNavigator = createBottomTabNavigator(
 const ShowsNavigator = createStackNavigator({
   TabNavigator,
   ShowDetails,
-  ViewRecommended,
-  ViewSimilar,
+  ViewRecommended: {
+    screen: ViewRecommended,
+    navigationOptions: {
+      title: "Recommended shows"
+    }
+  },
+  ViewSimilar: {
+    screen: ViewSimilar,
+    navigationOptions: {
+      title: "Similar shows"
+    }
+  },
   EpisodeList,
   EpisodeDetails,
   ChangePassword,
