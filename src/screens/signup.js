@@ -83,7 +83,7 @@ export default class SignUp extends Component {
               onPress={() => this.props.navigation.navigate("Login")}
               style={{ color: "#51cfb1" }}
             >
-              {" Login"}]
+              {" Login"}
             </Text>
           </Text>
         </View>
