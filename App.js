@@ -107,7 +107,12 @@ const ShowsNavigator = createStackNavigator({
   },
   EpisodeList,
   EpisodeDetails,
-  ChangePassword,
+  ChangePassword: {
+    screen: ChangePassword,
+    navigationOptions: {
+      title: "Change password"
+    }
+  },
   About
 });
 
